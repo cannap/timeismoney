@@ -1,0 +1,6 @@
+{
+	"$schema": "https://inlang.com/schema/inlang-message-format",
+	"currentLanguageTag": "Bieżący znacznik języka to \" {languageTag} \".",
+	"greeting": "Witaj {name} ! Masz wiadomości {count} .",
+	"change_language_to": "Zmień język na {languageTag}"
+}
