@@ -1,0 +1,50 @@
+{
+	"name": "timeismoney",
+	"version": "0.0.1",
+	"private": true,
+	"scripts": {
+		"dev": "vite dev",
+		"build": "paraglide-js compile --project ./project.inlang && vite build",
+		"preview": "vite preview",
+		"test": "npm run test:integration && npm run test:unit",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+		"lint": "prettier --check . && eslint .",
+		"format": "prettier --write .",
+		"test:integration": "playwright test",
+		"watch": "paraglide-js compile --project ./project.inlang --watch",
+		"test:unit": "vitest",
+		"generate": "drizzle-kit generate:sqlite --out ./drizzle/migrations --breakpoints --schema=./src/lib/server/schema.ts",
+		"migrate": "tsx drizzle/migrate",
+		"postinstall": "paraglide-js compile --project ./project.inlang"
+	},
+	"devDependencies": {
+		"@playwright/test": "^1.40.1",
+		"@sveltejs/adapter-auto": "^3.1.0",
+		"@sveltejs/kit": "^2.3.1",
+		"@sveltejs/vite-plugin-svelte": "^3.0.1",
+		"@types/eslint": "8.56.0",
+		"@typescript-eslint/eslint-plugin": "^6.18.1",
+		"@typescript-eslint/parser": "^6.18.1",
+		"dotenv": "^16.3.1",
+		"drizzle-kit": "^0.20.10",
+		"eslint": "^8.56.0",
+		"eslint-config-prettier": "^9.1.0",
+		"eslint-plugin-svelte": "^2.35.1",
+		"prettier": "^3.1.1",
+		"prettier-plugin-svelte": "^3.1.2",
+		"svelte": "^4.2.8",
+		"svelte-check": "^3.6.2",
+		"tslib": "^2.6.2",
+		"tsx": "^4.7.0",
+		"typescript": "^5.3.3",
+		"vite": "^5.0.11",
+		"vitest": "^1.1.3",
+		"@inlang/paraglide-js": "1.1.1"
+	},
+	"type": "module",
+	"dependencies": {
+		"@libsql/client": "0.4.0-pre.7",
+		"drizzle-orm": "^0.29.3"
+	}
+}
