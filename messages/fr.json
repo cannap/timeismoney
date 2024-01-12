@@ -1,6 +1,0 @@
-{
-	"$schema": "https://inlang.com/schema/inlang-message-format",
-	"currentLanguageTag": "La balise de langue actuelle est \" {languageTag} \".",
-	"greeting": "Bonjour {name} ! Vous avez des messages {count} .",
-	"change_language_to": "Changer la langue en {languageTag}"
-}
