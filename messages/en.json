@@ -3,5 +3,6 @@
 	"currentLanguageTag": "The current language tag is \"{languageTag} \".",
 	"greeting": "Hello {name} ! You have {count} messages.",
 	"change_language_to": "Change language to {languageTag}",
-	"hello_world": "hello World"
+	"hello_world": "hello World",
+	"new_content": "New content available."
 }
