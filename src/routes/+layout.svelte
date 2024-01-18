@@ -4,7 +4,12 @@
 	import Header from '$lib/Header.svelte';
 	import { getTextDirection } from '$lib/i18n.js';
 	import { setLanguageTag, sourceLanguageTag, type AvailableLanguageTag } from '$paraglide/runtime';
+	import * as m from '$paraglide/messages';
+	import { onMount } from 'svelte';
 
+	import { pwaInfo } from 'virtual:pwa-info';
+
+	$: webManifestLink = pwaInfo ? pwaInfo.webManifest.linkTag : '';
 	//Determine the current language from the URL. Fall back to the source language if none is specified.
 	$: lang = ($page.params.lang as AvailableLanguageTag) ?? sourceLanguageTag;
 
@@ -23,10 +28,15 @@
 	}
 </script>
 
-<!-- Include alternate language links in the head -->
-<Header />
+<svelte:head>
+	{@html webManifestLink}
+</svelte:head>
 
-<!-- Rerender the page whenever the language changes -->
 {#key lang}
+	<Header />
 	<slot />
 {/key}
+
+{#await import('$lib/components/ReloadPrompt.svelte') then { default: ReloadPrompt }}
+	<ReloadPrompt />
+{/await}
