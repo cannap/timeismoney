@@ -6,7 +6,7 @@ import { db } from '$lib/server/db'
 import { userTable } from '$db/schema'
 import { registerUserSchema, registerUserDefaults } from '$lib/shared/validations/auth'
 import type { Actions, PageServerLoad } from './$types'
-import { pickAsync } from 'valibot'
+import { pick } from 'valibot'
 import { superValidate, setError } from 'sveltekit-superforms/server'
 import { type Input } from 'valibot'
 import { valibot } from 'sveltekit-superforms/adapters'
@@ -17,7 +17,7 @@ export const load: PageServerLoad = async (event) => {
 	}
 
 	const form = await superValidate(
-		valibot(pickAsync(registerUserSchema, ['username', 'password', 'email']), {
+		valibot(pick(registerUserSchema, ['username', 'password', 'email']), {
 			defaults: registerUserDefaults
 		})
 	)
@@ -38,13 +38,18 @@ export const actions: Actions = {
 			const isUniqueEmail = await uniqueEmail(form.data.email)
 
 			if (!isUniqueEmail) {
-				return setError(form, 'email', 'Email schon vergeben')
+				setError(form, 'email', 'Email schon vergeben')
 			}
 
 			const isUniqueUsename = await uniqueUsername(form.data.username)
 
 			if (!isUniqueUsename) {
-				return setError(form, 'username', 'Benutzername schon vergeben')
+				setError(form, 'username', 'Benutzername schon vergeben')
+			}
+
+			if (!form.valid) {
+				// Again, return { form } and things will just work.
+				return fail(400, { form })
 			}
 
 			const hashedPassword = await new Argon2id().hash(form.data.password)

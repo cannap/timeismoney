@@ -3,15 +3,18 @@
 	import { superForm } from 'sveltekit-superforms/client'
 	import Label from '$lib/components/ui/label/label.svelte'
 	import Input from '$lib/components/ui/input/input.svelte'
-	export let data: PageData
+	import type { Infer } from 'sveltekit-superforms'
+
 	import { valibot } from 'sveltekit-superforms/adapters'
-	import { registerUserSchema } from '$lib/shared/validations/auth'
+	import { registerUserDefaults, registerUserSchema } from '$lib/shared/validations/auth'
 	import * as Card from '$lib/components/ui/card'
 	import Button from '$lib/components/ui/button/button.svelte'
+
+	export let data: PageData
+
 	const { form, errors, enhance } = superForm(data.form, {
-		validators: valibot(registerUserSchema, { defaults: { username: '', email: '', password: '' } })
+		validators: valibot(registerUserSchema, { defaults: registerUserDefaults })
 	})
-	let hello = ''
 </script>
 
 <pre>{JSON.stringify($errors, null, 2)}</pre>
@@ -31,6 +34,7 @@
 				<div class="grid gap-2">
 					<Label for="email">Email</Label>
 					<Input type="text" name="email" id="email" bind:value={$form.email} />
+					{$errors.email}
 				</div>
 				<div class="grid gap-2">
 					<Label for="password">Password</Label>

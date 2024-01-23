@@ -6,7 +6,6 @@ import { Argon2id } from 'oslo/password'
 import { db } from '$lib/server/db'
 import { loginUserDefaults, loginUserSchema } from '$lib/shared/validations/auth'
 import { lucia } from '$lib/server/auth'
-import { eq } from 'drizzle-orm'
 export const load: PageServerLoad = async (event) => {
 	if (event.locals.user) {
 		return redirect(302, '/')
@@ -35,8 +34,8 @@ export const actions: Actions = {
 			return setError(form, 'username', 'Password oder Benutzernamen falsch')
 		}
 
-		const validPassword = new Argon2id().verify(existingUser.password, form.data.password)
-
+		const validPassword = await new Argon2id().verify(existingUser.password, form.data.password)
+		console.log()
 		if (!validPassword) {
 			return setError(form, 'username', 'Password oder Benutzernamen falsch')
 		}

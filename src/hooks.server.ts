@@ -1,7 +1,7 @@
 import { lucia } from '$lib/server/auth'
 import type { Handle } from '@sveltejs/kit'
 import { sequence } from '@sveltejs/kit/hooks'
-
+import { i18n } from '$lib/i18n'
 const auth: Handle = async ({ event, resolve }) => {
 	const sessionId = event.cookies.get(lucia.sessionCookieName)
 	if (!sessionId) {
@@ -32,4 +32,4 @@ const auth: Handle = async ({ event, resolve }) => {
 	return resolve(event)
 }
 
-export const handle = sequence(auth)
+export const handle = sequence(i18n.handle({ langPlaceholder: '%lang%' }), auth)
