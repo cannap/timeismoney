@@ -2,7 +2,6 @@ import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig } from 'vitest/config';
 import { paraglide } from '@inlang/paraglide-js-adapter-vite';
 import { SvelteKitPWA } from '@vite-pwa/sveltekit';
-import basicSsl from '@vitejs/plugin-basic-ssl';
 
 export default defineConfig({
 	plugins: [
@@ -15,6 +14,7 @@ export default defineConfig({
 			devOptions: {
 				enabled: true
 			}
+
 			/* other pwa options */
 		}),
 		paraglide({

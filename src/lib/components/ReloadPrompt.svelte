@@ -1,6 +1,8 @@
 <script lang="ts">
 	import { useRegisterSW } from 'virtual:pwa-register/svelte';
 	import * as m from '$paraglide/messages';
+	import { Button } from '$lib/components/ui/button';
+	import * as Card from '$lib/components/ui/card';
 
 	const { needRefresh, updateServiceWorker, offlineReady } = useRegisterSW({
 		onRegistered(r: ServiceWorkerRegistration) {
@@ -23,39 +25,19 @@
 </script>
 
 {#if toast}
-	<div class="pwa-toast" role="alert">
-		<div class="message">
-			<span> {m.new_content()} </span>
-		</div>
-		{#if $needRefresh}
-			<button on:click={() => updateServiceWorker(true)}> Reload </button>
-		{/if}
-		<button on:click={close}> Close </button>
-	</div>
-{/if}
+	<Card.Root class="fixed bottom-5 right-5 " role="alert">
+		<Card.Header>
+			<Card.Title>{m.new_content()}</Card.Title>
+		</Card.Header>
+		<Card.Content>
+			<div class="rounded-md border p-4">Aktualisieren Sie die Seite</div>
+		</Card.Content>
 
-<style>
-	.pwa-toast {
-		position: fixed;
-		right: 0;
-		bottom: 0;
-		margin: 16px;
-		padding: 12px;
-		border: 1px solid #8885;
-		border-radius: 4px;
-		z-index: 2;
-		text-align: left;
-		box-shadow: 3px 4px 5px 0 #8885;
-		background-color: white;
-	}
-	.pwa-toast .message {
-		margin-bottom: 8px;
-	}
-	.pwa-toast button {
-		border: 1px solid #8885;
-		outline: none;
-		margin-right: 5px;
-		border-radius: 2px;
-		padding: 3px 10px;
-	}
-</style>
+		<Card.Footer class="flex justify-between">
+			{#if $needRefresh}
+				<Button size="sm" on:click={() => updateServiceWorker(true)}>Aktualisieren</Button>
+			{/if}
+			<Button variant="secondary" size="sm" on:click={close}>Schliessen</Button>
+		</Card.Footer>
+	</Card.Root>
+{/if}

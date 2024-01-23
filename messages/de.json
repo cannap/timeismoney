@@ -4,5 +4,6 @@
 	"greeting": "Hallo {name}! Du hast {count} Nachrichten.",
 	"change_language_to": "Sprache ändern zu {languageTag}",
 	"hello_world": "Hallo Welt",
-	"new_content": "Neuer Inhalt verfügbar."
+	"new_content": "Neuer Inhalt verfügbar.",
+	"validation_username": ""
 }

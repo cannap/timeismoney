@@ -8,6 +8,13 @@
       "when": 1705573023004,
       "tag": "0000_military_boom_boom",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1705825729443,
+      "tag": "0001_secret_kid_colt",
+      "breakpoints": true
     }
   ]
 }
