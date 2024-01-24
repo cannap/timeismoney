@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { Button } from '$lib/components/ui/button';
-	import * as DropdownMenu from '$lib/components/ui/dropdown-menu';
-	import { Sun, Moon } from 'radix-icons-svelte';
-	import { setMode, resetMode } from 'mode-watcher';
+	import { Button } from '$lib/components/ui/button'
+	import * as DropdownMenu from '$lib/components/ui/dropdown-menu'
+	import { Sun, Moon } from 'radix-icons-svelte'
+	import { setMode, resetMode } from 'mode-watcher'
 </script>
 
 <DropdownMenu.Root>

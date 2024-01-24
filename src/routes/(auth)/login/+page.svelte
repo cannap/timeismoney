@@ -5,6 +5,7 @@
 	import { superForm } from 'sveltekit-superforms/client'
 	import { valibot } from 'sveltekit-superforms/adapters'
 	import type { PageData } from './$types'
+	import * as m from '$paraglide/messages.js'
 
 	import { Button } from '$lib/components/ui/button'
 	import { loginUserDefaults, loginUserSchema } from '$lib/shared/validations/auth'
@@ -17,13 +18,13 @@
 <div class="flex items-center justify-center md:h-[90.5vh]">
 	<Card.Root class="md:w-[400px]">
 		<Card.Header class="space-y-1">
-			<Card.Title class="text-2xl">Login to Continue</Card.Title>
-			<Card.Description>Enter your usernamen and password to Visit Dashboard</Card.Description>
+			<Card.Title class="text-2xl">{m.login_to_continue()}</Card.Title>
+			<Card.Description>{m.enter_username_and_password()}</Card.Description>
 		</Card.Header>
 		<form method="post" use:enhance>
 			<Card.Content class="grid gap-4">
 				<div class="grid gap-2">
-					<Label for="username">Username</Label>
+					<Label for="username">{m.username()}</Label>
 					<Input type="text" name="username" id="username" bind:value={$form.username} />
 
 					<p class="text-destructive">

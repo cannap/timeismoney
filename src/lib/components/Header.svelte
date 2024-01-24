@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { goto } from '$app/navigation'
 	import { page } from '$app/stores'
+	import LanguageSwitcher from './LanguageSwitcher.svelte'
 
 	import ModeToggler from './ModeToggler.svelte'
 	import Button from './ui/button/button.svelte'
@@ -22,6 +23,13 @@
 	}
 </script>
 
-<ModeToggler></ModeToggler>
+<header
+	class="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
+>
+	<div class="container flex h-14 max-w-screen-2xl items-center">
+		<ModeToggler></ModeToggler>
 
-<Button on:click={handleSignOut}>Logout</Button>
+		<Button size="sm" on:click={handleSignOut}>Logout</Button>
+		<LanguageSwitcher></LanguageSwitcher>
+	</div>
+</header>

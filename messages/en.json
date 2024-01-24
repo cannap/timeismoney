@@ -4,5 +4,6 @@
 	"greeting": "Hello {name} ! You have {count} messages.",
 	"change_language_to": "Change language to {languageTag}",
 	"hello_world": "hello World",
-	"new_content": "New content available."
+	"new_content": "New content available.",
+	"username": "Username"
 }

@@ -5,5 +5,8 @@
 	"change_language_to": "Sprache ändern zu {languageTag}",
 	"hello_world": "Hallo Welt",
 	"new_content": "Neuer Inhalt verfügbar.",
-	"validation_username": ""
+	"validation_username": "",
+	"username": "Benutzername",
+	"login_to_continue": "Login to Continue",
+	"enter_username_and_password": "Enter your usernamen and password to Visit Dashboard"
 }
