@@ -1,7 +1,7 @@
-import { sveltekit } from '@sveltejs/kit/vite';
-import { defineConfig } from 'vitest/config';
-import { paraglide } from '@inlang/paraglide-js-adapter-vite';
-import { SvelteKitPWA } from '@vite-pwa/sveltekit';
+import { sveltekit } from '@sveltejs/kit/vite'
+import { defineConfig } from 'vitest/config'
+import { paraglide } from '@inlang/paraglide-js-adapter-sveltekit/vite'
+import { SvelteKitPWA } from '@vite-pwa/sveltekit'
 
 export default defineConfig({
 	plugins: [
@@ -25,4 +25,4 @@ export default defineConfig({
 	test: {
 		include: ['src/**/*.{test,spec}.{js,ts}']
 	}
-});
+})

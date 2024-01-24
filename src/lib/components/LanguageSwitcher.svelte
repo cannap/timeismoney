@@ -18,14 +18,27 @@
 	</DropdownMenu.Trigger>
 	<DropdownMenu.Content align="end">
 		{#each availableLanguageTags as lang}
-			<DropdownMenu.Item
-				aria-current={languageTag() === lang ? 'true' : undefined}
-				href={i18n.route($page.url.pathname)}
-				hreflang={lang}
-				>{lang.toUpperCase()} {i18n.route($page.url.pathname)} {languageTag()}</DropdownMenu.Item
-			>
+			<DropdownMenu.Item>
+				<a
+					href={i18n.route($page.url.pathname)}
+					hreflang={lang}
+					class="lang"
+					aria-current={languageTag() === lang ? 'true' : undefined}
+					data-sveltekit-keepfocus>{lang.toUpperCase()}</a
+				>
+			</DropdownMenu.Item>
 		{/each}
 	</DropdownMenu.Content>
 </DropdownMenu.Root>
 
 {languageTag()}
+
+{#each availableLanguageTags as lang}
+	<a
+		href={i18n.route($page.url.pathname)}
+		hreflang={lang}
+		class="lang"
+		aria-current={languageTag() === lang ? 'true' : undefined}
+		data-sveltekit-keepfocus>{lang.toUpperCase()}</a
+	>
+{/each}
