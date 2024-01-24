@@ -31,14 +31,14 @@
 	</DropdownMenu.Content>
 </DropdownMenu.Root>
 
-{languageTag()}
-
-{#each availableLanguageTags as lang}
-	<a
-		href={i18n.route($page.url.pathname)}
-		hreflang={lang}
-		class="lang"
-		aria-current={languageTag() === lang ? 'true' : undefined}
-		data-sveltekit-keepfocus>{lang.toUpperCase()}</a
-	>
-{/each}
+<div class="flex gap-6">
+	{#each availableLanguageTags as lang}
+		<a
+			href={i18n.route($page.url.pathname)}
+			hreflang={lang}
+			class="lang"
+			aria-current={languageTag() === lang ? 'true' : undefined}
+			data-sveltekit-keepfocus>{lang.toUpperCase()}</a
+		>
+	{/each}
+</div>
