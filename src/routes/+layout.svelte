@@ -1,9 +1,9 @@
 <script lang="ts">
 	import '../app.scss'
 	import { browser } from '$app/environment'
-	import { page } from '$app/stores'
 	import Header from '$lib/components/Header.svelte'
-
+	import { availableLanguageTags, languageTag } from '$paraglide/runtime'
+	import { page } from '$app/stores'
 	import { ModeWatcher } from 'mode-watcher'
 	import { pwaInfo } from 'virtual:pwa-info'
 	import type { LayoutServerData } from './$types'
@@ -20,6 +20,15 @@
 	{@html webManifestLink}
 </svelte:head>
 <ParaglideJS {i18n}>
+	{#each availableLanguageTags as lang}
+		<a
+			href={i18n.route($page.url.pathname)}
+			hreflang={lang}
+			class="lang"
+			aria-current={languageTag() === lang ? 'true' : undefined}
+			data-sveltekit-keepfocus>{lang.toUpperCase()}</a
+		>
+	{/each}
 	<Header></Header>
 	<slot />
 </ParaglideJS>
