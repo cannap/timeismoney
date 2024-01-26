@@ -5,14 +5,13 @@
 	import { page } from '$app/stores'
 	import { Globe2 } from 'lucide-svelte'
 	import { i18n } from '$lib/i18n'
+	import { Globe } from 'radix-icons-svelte'
 </script>
 
 <DropdownMenu.Root>
 	<DropdownMenu.Trigger asChild let:builder>
 		<Button builders={[builder]} variant="outline" size="icon">
-			<Globe2
-				class="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100"
-			/>
+			<Globe class="h-[1.2rem] w-[1.2rem]" />
 			<span class="sr-only">Language Switcher</span>
 		</Button>
 	</DropdownMenu.Trigger>
@@ -22,7 +21,7 @@
 				<a
 					href={i18n.route($page.url.pathname)}
 					hreflang={lang}
-					class="lang"
+					class="lang block flex-1"
 					aria-current={languageTag() === lang ? 'true' : undefined}
 					data-sveltekit-keepfocus>{lang.toUpperCase()}</a
 				>
@@ -30,15 +29,3 @@
 		{/each}
 	</DropdownMenu.Content>
 </DropdownMenu.Root>
-
-<div class="flex gap-6">
-	{#each availableLanguageTags as lang}
-		<a
-			href={i18n.route($page.url.pathname)}
-			hreflang={lang}
-			class="lang"
-			aria-current={languageTag() === lang ? 'true' : undefined}
-			data-sveltekit-keepfocus>{lang.toUpperCase()}</a
-		>
-	{/each}
-</div>

@@ -6,20 +6,19 @@ import { SvelteKitPWA } from '@vite-pwa/sveltekit'
 export default defineConfig({
 	plugins: [
 		//basicSsl({}),
-		sveltekit(),
-		SvelteKitPWA({
-			strategies: 'generateSW',
-			mode: 'development',
-			//filename: 'sw.js', // or `my-sw.ts`
-			devOptions: {
-				enabled: true
-			}
-
-			/* other pwa options */
-		}),
 		paraglide({
+			silent: false,
 			project: './project.inlang', //Path to your inlang project
 			outdir: './src/paraglide' //Where you want the generated files to be placed
+		}),
+		sveltekit(),
+		SvelteKitPWA({
+			mode: 'development',
+			//	devOptions: { enabled: true },
+			strategies: 'generateSW'
+			//filename: 'sw.js', // or `my-sw.ts`
+
+			/* other pwa options */
 		})
 	],
 	test: {

@@ -1,11 +1,11 @@
-import { Lucia } from 'lucia';
-import { dev } from '$app/environment';
-import { db } from './db';
-import { sessionTable, userTable } from './db/schema';
-import { DrizzleSQLiteAdapter } from '@lucia-auth/adapter-drizzle';
+import { Lucia } from 'lucia'
+import { dev } from '$app/environment'
+import { db } from './db'
+import { sessionTable, usersTable } from './db/schema'
+import { DrizzleSQLiteAdapter } from '@lucia-auth/adapter-drizzle'
 
 //const adapter = new BetterSQLite3Adapter(db); // your adapter
-const adapter = new DrizzleSQLiteAdapter(db, sessionTable, userTable);
+const adapter = new DrizzleSQLiteAdapter(db, sessionTable, usersTable)
 export const lucia = new Lucia(adapter, {
 	sessionCookie: {
 		attributes: {
@@ -16,18 +16,20 @@ export const lucia = new Lucia(adapter, {
 	getUserAttributes: (attributes) => {
 		return {
 			// attributes has the type of DatabaseUserAttributes
-			username: attributes.username
-		};
+			username: attributes.username,
+			email: attributes.email
+		}
 	}
-});
+})
 
 declare module 'lucia' {
 	interface Register {
-		Lucia: typeof lucia;
-		DatabaseUserAttributes: DatabaseUserAttributes;
+		Lucia: typeof lucia
+		DatabaseUserAttributes: DatabaseUserAttributes
 	}
 }
 
 interface DatabaseUserAttributes {
-	username: string;
+	username: string
+	email: string
 }

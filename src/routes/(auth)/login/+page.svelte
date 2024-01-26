@@ -33,12 +33,12 @@
 				</div>
 
 				<div class="grid gap-2">
-					<Label for="password">Password</Label>
+					<Label for="password">{m.password()}</Label>
 					<Input type="password" name="password" id="password" bind:value={$form.password} />
 				</div>
 			</Card.Content>
 			<Card.Footer class="Footer">
-				<Button type="submit" class="w-full">Continue</Button>
+				<Button type="submit" class="w-full">{m.next()}</Button>
 			</Card.Footer>
 		</form>
 		<Card.Footer>

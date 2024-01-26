@@ -8,7 +8,7 @@ import { loginUserDefaults, loginUserSchema } from '$lib/shared/validations/auth
 import { lucia } from '$lib/server/auth'
 export const load: PageServerLoad = async (event) => {
 	if (event.locals.user) {
-		return redirect(302, '/')
+		return redirect(307, '/dashboard')
 	}
 
 	const form = await superValidate(
@@ -26,8 +26,8 @@ export const actions: Actions = {
 			valibot(loginUserSchema, { defaults: loginUserDefaults })
 		)
 
-		const existingUser = await db.query.userTable.findFirst({
-			where: (userTable, { eq }) => eq(userTable.username, form.data.username)
+		const existingUser = await db.query.usersTable.findFirst({
+			where: (usersTable, { eq }) => eq(usersTable.username, form.data.username)
 		})
 
 		if (!existingUser) {

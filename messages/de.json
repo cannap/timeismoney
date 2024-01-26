@@ -1,12 +1,11 @@
 {
 	"$schema": "https://inlang.com/schema/inlang-message-format",
 	"currentLanguageTag": "Der aktuelle Sprachtag ist \"{languageTag}\".",
-	"greeting": "Hallo {name}! Du hast {count} Nachrichten.",
 	"change_language_to": "Sprache ändern zu {languageTag}",
-	"hello_world": "Hallo Welt",
 	"new_content": "Neuer Inhalt verfügbar.",
-	"validation_username": "",
 	"username": "Benutzername",
-	"login_to_continue": "Login to Continue",
-	"enter_username_and_password": "Enter your usernamen and password to Visit Dashboard"
+	"login_to_continue": "Geben Sie Ihren Benutzernamen und Ihr Passwort ein, um das Dashboard zu besuchen",
+	"enter_username_and_password": "Geben Sie Ihren Benutzernamen und Ihr Passwort ein, um das Dashboard zu besuchen",
+	"password": "Passwort",
+	"next": "Weiter"
 }

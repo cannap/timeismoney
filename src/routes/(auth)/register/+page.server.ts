@@ -3,7 +3,7 @@ import { fail, redirect } from '@sveltejs/kit'
 import { generateId } from 'lucia'
 import { Argon2id } from 'oslo/password'
 import { db } from '$lib/server/db'
-import { userTable } from '$db/schema'
+import { usersTable } from '$db/schema'
 import { registerUserSchema, registerUserDefaults } from '$lib/shared/validations/auth'
 import type { Actions, PageServerLoad } from './$types'
 import { pick } from 'valibot'
@@ -56,7 +56,7 @@ export const actions: Actions = {
 
 			const userId = generateId(15)
 			const currentDate = new Date()
-			await db.insert(userTable).values({
+			await db.insert(usersTable).values({
 				...form.data,
 				id: userId,
 				password: hashedPassword,

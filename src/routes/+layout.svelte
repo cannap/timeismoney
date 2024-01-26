@@ -10,7 +10,6 @@
 	import { ParaglideJS } from '@inlang/paraglide-js-adapter-sveltekit'
 	import { i18n } from '$lib/i18n'
 	export let data: LayoutServerData
-
 	$: webManifestLink = pwaInfo ? pwaInfo.webManifest.linkTag : ''
 </script>
 
@@ -20,17 +19,14 @@
 	{@html webManifestLink}
 </svelte:head>
 <ParaglideJS {i18n}>
-	{#each availableLanguageTags as lang}
-		<a
-			href={i18n.route($page.url.pathname)}
-			hreflang={lang}
-			class="lang"
-			aria-current={languageTag() === lang ? 'true' : undefined}
-			data-sveltekit-keepfocus>{lang.toUpperCase()}</a
-		>
-	{/each}
-	<Header></Header>
-	<slot />
+	{#if data.user}
+		<Header user={{ username: data.user.username, email: data.user.email }}></Header>
+	{:else}
+		<!-- Handle the case when data.user is null -->
+	{/if}
+	<div class="container max-w-screen-2xl">
+		<slot />
+	</div>
 </ParaglideJS>
 
 {#await import('$lib/components/ReloadPrompt.svelte') then { default: ReloadPrompt }}
