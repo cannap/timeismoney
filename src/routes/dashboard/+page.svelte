@@ -3,14 +3,12 @@
 
 	import type { PageData } from './$types'
 	import { Button } from '$lib/components/ui/button'
-	import CreateCompanyForm from '$forms/CreateCompanyForm.svelte'
+	import MainContent from '$lib/components/MainContent.svelte'
 	export let data: PageData
 </script>
 
-{#if !data.companies.length}
-	<div class="flex items-center justify-center md:h-[90.5vh]">
-		<Card.Root class="mx-auto md:w-[400px]">
-			<CreateCompanyForm data={data.companyForm}></CreateCompanyForm>
-		</Card.Root>
-	</div>
-{/if}
+<MainContent>
+	{#if !data.companies.length}
+		<p>Um zu beginnen tragen Sie eine Firma ein</p>
+	{/if}
+</MainContent>

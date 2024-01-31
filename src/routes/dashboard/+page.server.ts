@@ -17,7 +17,7 @@ export const load: PageServerLoad = async ({ locals }) => {
 
 	const form = await superValidate(
 		valibot(createCompanySchema, {
-			defaults: createCompanyDefault
+			//defaults: createCompanyDefault
 		})
 	)
 

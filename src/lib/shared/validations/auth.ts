@@ -18,6 +18,6 @@ export type RegisterUserSchema = Input<typeof registerUserSchema> // { email: st
 
 export const loginUserDefaults = { username: '', password: '' }
 export const loginUserSchema = object({
-	username: string([minLength(1, 'Bitte geben Sie eine Benutzernamen ein')]),
-	password: string([minLength(1, 'Bitte geben Sie ein Passwort ein')])
+	username: string([minLength(1, 'Bitte geben Sie einen Benutzernamen ein.')]),
+	password: string([minLength(1, 'Bitte geben Sie ein Passwort ein.')])
 })

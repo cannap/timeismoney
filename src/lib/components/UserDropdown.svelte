@@ -3,7 +3,7 @@
 	import * as Avatar from '$lib/components/ui/avatar'
 	import { Button } from '$lib/components/ui/button'
 	import * as DropdownMenu from '$lib/components/ui/dropdown-menu'
-	export let user = { username: string, email: string }
+	export let user = { username: '', email: '' }
 	async function handleSignOut() {
 		const response = await fetch('logout', {
 			method: 'POST',
@@ -25,7 +25,7 @@
 	<DropdownMenu.Trigger asChild let:builder>
 		<Button variant="ghost" builders={[builder]} class="relative h-8 w-8 rounded-full">
 			<Avatar.Root class="h-9 w-9">
-				<Avatar.Image src="https://github.com/shadcn.png" alt="@shadcn" />
+				<Avatar.Image src="" alt={user.username} />
 				<Avatar.Fallback>MB</Avatar.Fallback>
 			</Avatar.Root>
 		</Button>
@@ -38,5 +38,7 @@
 				<p class="text-xs leading-none text-muted-foreground">{user.email}</p>
 			</div>
 		</DropdownMenu.Label>
+		<DropdownMenu.Separator />
+		<DropdownMenu.Item on:click={handleSignOut}>Logout</DropdownMenu.Item>
 	</DropdownMenu.Content>
 </DropdownMenu.Root>

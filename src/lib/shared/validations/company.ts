@@ -1,4 +1,5 @@
-import { string, minLength, number, object, minValue, url } from 'valibot'
+import { string, minLength, number, object, transform, optional } from 'valibot'
+import { addHttps } from '$lib/utils/addHttps'
 /**
  * 	id: text('id').notNull().primaryKey(),
 	url: text('url'),
@@ -7,15 +8,9 @@ import { string, minLength, number, object, minValue, url } from 'valibot'
 	leaderId: text('leader_id')
  */
 export const createCompanySchema = object({
-	url: string([url('Bitte geben Sie eine gültige Url ein.')]),
 	name: string([minLength(1, 'Bitte geben sie einen Firmennamen ein ')]),
-	size: number([minValue(1)])
+	size: optional(number()),
+	url: optional(transform(string(), addHttps))
 })
-
-export const createCompanyDefault = {
-	url: '',
-	name: '',
-	size: 1
-}
 
 export type CreateCompanySchema = typeof createCompanySchema

@@ -3,7 +3,6 @@
 	import * as DropdownMenu from '$lib/components/ui/dropdown-menu'
 	import { Button } from '$lib/components/ui/button'
 	import { page } from '$app/stores'
-	import { Globe2 } from 'lucide-svelte'
 	import { i18n } from '$lib/i18n'
 	import { Globe } from 'radix-icons-svelte'
 </script>

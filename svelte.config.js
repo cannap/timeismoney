@@ -1,5 +1,5 @@
-import adapter from '@sveltejs/adapter-auto';
-import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
+import adapter from '@sveltejs/adapter-auto'
+import { vitePreprocess } from '@sveltejs/vite-plugin-svelte'
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -18,9 +18,10 @@ const config = {
 		alias: {
 			$paraglide: './src/paraglide/',
 			$db: './src/lib/server/db/',
-			$forms: './src/lib/components/Forms/'
+			$forms: './src/lib/components/Forms/',
+			$validations: './src/lib/shared/validations'
 		}
 	}
-};
+}
 
-export default config;
+export default config

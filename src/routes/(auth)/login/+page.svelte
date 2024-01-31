@@ -11,7 +11,7 @@
 	import { loginUserDefaults, loginUserSchema } from '$lib/shared/validations/auth'
 	export let data: PageData
 	const { form, errors, enhance } = superForm(data.form, {
-		validators: valibot(loginUserSchema, { defaults: loginUserDefaults })
+		validators: valibot(loginUserSchema)
 	})
 </script>
 
@@ -24,17 +24,25 @@
 		<form method="post" use:enhance>
 			<Card.Content class="grid gap-4">
 				<div class="grid gap-2">
-					<Label for="username">{m.username()}</Label>
-					<Input type="text" name="username" id="username" bind:value={$form.username} />
-
-					<p class="text-destructive">
-						{$errors.username}
-					</p>
+					<Input
+						label={m.username()}
+						type="text"
+						error={$errors.username}
+						name="username"
+						id="username"
+						bind:value={$form.username}
+					/>
 				</div>
 
 				<div class="grid gap-2">
-					<Label for="password">{m.password()}</Label>
-					<Input type="password" name="password" id="password" bind:value={$form.password} />
+					<Input
+						label={m.password()}
+						type="password"
+						error={$errors.password}
+						name="password"
+						id="password"
+						bind:value={$form.password}
+					/>
 				</div>
 			</Card.Content>
 			<Card.Footer class="Footer">

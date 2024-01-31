@@ -1,23 +1,21 @@
 <script lang="ts">
 	import type { PageData } from './$types'
 	import { superForm } from 'sveltekit-superforms/client'
-	import Label from '$lib/components/ui/label/label.svelte'
 	import Input from '$lib/components/ui/input/input.svelte'
-	import type { Infer } from 'sveltekit-superforms'
+	import * as m from '$paraglide/messages.js'
 
 	import { valibot } from 'sveltekit-superforms/adapters'
-	import { registerUserDefaults, registerUserSchema } from '$lib/shared/validations/auth'
+	import { registerUserSchema } from '$validations/auth'
 	import * as Card from '$lib/components/ui/card'
 	import Button from '$lib/components/ui/button/button.svelte'
 
 	export let data: PageData
 
 	const { form, errors, enhance } = superForm(data.form, {
-		validators: valibot(registerUserSchema, { defaults: registerUserDefaults })
+		validators: valibot(registerUserSchema)
 	})
 </script>
 
-<pre>{JSON.stringify($errors, null, 2)}</pre>
 <div class="flex items-center justify-center md:h-[90.5vh]">
 	<Card.Root class="md:w-[400px]">
 		<Card.Header class="space-y-1">
@@ -27,22 +25,38 @@
 		<form method="post" use:enhance>
 			<Card.Content class="grid gap-4">
 				<div class="grid gap-2">
-					<Label for="username">Username</Label>
-					<Input type="text" name="username" id="username" bind:value={$form.username} />
-					{$errors.username}
+					<Input
+						type="text"
+						name="username"
+						id="username"
+						label="Benutzername"
+						error={$errors.username}
+						bind:value={$form.username}
+					/>
 				</div>
 				<div class="grid gap-2">
-					<Label for="email">Email</Label>
-					<Input type="text" name="email" id="email" bind:value={$form.email} />
-					{$errors.email}
+					<Input
+						label="Email"
+						type="text"
+						name="email"
+						id="email"
+						error={$errors.email}
+						bind:value={$form.email}
+					/>
 				</div>
 				<div class="grid gap-2">
-					<Label for="password">Password</Label>
-					<Input type="password" name="password" id="password" bind:value={$form.password} />
+					<Input
+						label={m.password()}
+						type="password"
+						name="password"
+						id="password"
+						error={$errors.password}
+						bind:value={$form.password}
+					/>
 				</div>
 			</Card.Content>
 			<Card.Footer class="Footer">
-				<Button type="submit" class="w-full">Continue</Button>
+				<Button type="submit" class="w-full">{m.next()}</Button>
 			</Card.Footer>
 		</form>
 		<Card.Footer>

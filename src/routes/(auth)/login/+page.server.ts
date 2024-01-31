@@ -1,30 +1,23 @@
-import { fail, redirect } from '@sveltejs/kit'
+import { redirect } from '@sveltejs/kit'
 import type { Actions, PageServerLoad } from './$types'
 import { superValidate, message, setError } from 'sveltekit-superforms/server'
 import { valibot } from 'sveltekit-superforms/adapters'
 import { Argon2id } from 'oslo/password'
 import { db } from '$lib/server/db'
-import { loginUserDefaults, loginUserSchema } from '$lib/shared/validations/auth'
+import { loginUserSchema } from '$lib/shared/validations/auth'
 import { lucia } from '$lib/server/auth'
 export const load: PageServerLoad = async (event) => {
 	if (event.locals.user) {
 		return redirect(307, '/dashboard')
 	}
 
-	const form = await superValidate(
-		valibot(loginUserSchema, {
-			defaults: loginUserDefaults
-		})
-	)
+	const form = await superValidate(valibot(loginUserSchema, {}))
 	return { form }
 }
 
 export const actions: Actions = {
 	default: async (event) => {
-		const form = await superValidate(
-			event.request,
-			valibot(loginUserSchema, { defaults: loginUserDefaults })
-		)
+		const form = await superValidate(event.request, valibot(loginUserSchema))
 
 		const existingUser = await db.query.usersTable.findFirst({
 			where: (usersTable, { eq }) => eq(usersTable.username, form.data.username)
