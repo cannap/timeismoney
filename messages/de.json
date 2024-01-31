@@ -4,9 +4,16 @@
 	"change_language_to": "Sprache ändern zu {languageTag}",
 	"new_content": "Neuer Inhalt verfügbar.",
 	"username": "Benutzername",
-	"login_to_continue": "Geben Sie Ihren Benutzernamen und Ihr Passwort ein, um das Dashboard zu besuchen",
+	"login_to_continue": "Anmelden",
 	"enter_username_and_password": "Geben Sie Ihren Benutzernamen und Ihr Passwort ein, um das Dashboard zu besuchen",
 	"password": "Passwort",
 	"next": "Weiter",
-	"email": "Email"
+	"email": "Email",
+	"login": "Anmelden",
+	"already_have_an_account": "Besitzen Sie bereits einen Account",
+	"create_account": "Konto erstellen",
+	"signup": "Registrieren",
+	"get_started": "Um zu beginnen benötigen Sie ein Konto.",
+	"logout": "Abmelden",
+	"dont_have_account": "Noch kein Konto?"
 }

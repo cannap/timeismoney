@@ -9,7 +9,7 @@ export const registerUserDefaults = { username: '', password: '', email: '' }
 
 export const registerUserSchema = object({
 	//id: string(),
-	email: string([email()]),
+	email: string([email('Bitte geben Sie eine gültige Email ein')]),
 	password: string([minLength(5, 'Die Minimum länge beträgt 5'), maxLength(254)]),
 	username: string([USERNAME_VALIDATION])
 })

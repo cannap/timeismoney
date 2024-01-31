@@ -3,6 +3,8 @@
 	import * as Avatar from '$lib/components/ui/avatar'
 	import { Button } from '$lib/components/ui/button'
 	import * as DropdownMenu from '$lib/components/ui/dropdown-menu'
+	import * as m from '$paraglide/messages.js'
+
 	export let user = { username: '', email: '' }
 	async function handleSignOut() {
 		const response = await fetch('logout', {
@@ -39,6 +41,6 @@
 			</div>
 		</DropdownMenu.Label>
 		<DropdownMenu.Separator />
-		<DropdownMenu.Item on:click={handleSignOut}>Logout</DropdownMenu.Item>
+		<DropdownMenu.Item on:click={handleSignOut}>{m.logout()}</DropdownMenu.Item>
 	</DropdownMenu.Content>
 </DropdownMenu.Root>

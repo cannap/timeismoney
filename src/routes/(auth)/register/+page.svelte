@@ -19,8 +19,8 @@
 <div class="flex items-center justify-center md:h-[90.5vh]">
 	<Card.Root class="md:w-[400px]">
 		<Card.Header class="space-y-1">
-			<Card.Title class="text-2xl">Create an account</Card.Title>
-			<Card.Description>Enter your email below to create your account</Card.Description>
+			<Card.Title class="text-2xl">{m.create_account()}</Card.Title>
+			<Card.Description>{m.get_started()}</Card.Description>
 		</Card.Header>
 		<form method="post" use:enhance>
 			<Card.Content class="grid gap-4">
@@ -61,9 +61,8 @@
 		</form>
 		<Card.Footer>
 			<div>
-				Already have an account? <a href="/login" class="text-blue-500 underline underline-offset-1"
-					>Log In</a
-				>
+				{m.already_have_an_account()}
+				<a href="/login" class="text-blue-500 underline underline-offset-1">{m.login()}</a>
 			</div>
 		</Card.Footer>
 	</Card.Root>

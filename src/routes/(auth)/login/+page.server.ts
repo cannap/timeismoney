@@ -40,6 +40,6 @@ export const actions: Actions = {
 			...sessionCookie.attributes
 		})
 
-		return redirect(302, '/')
+		return redirect(302, '/dashboard')
 	}
 }

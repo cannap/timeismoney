@@ -19,7 +19,7 @@
 </script>
 
 {#if label}
-	<Label for={id}>{label}</Label>
+	<Label error={!!error} for={id}>{label}</Label>
 {/if}
 <input
 	class={cn(

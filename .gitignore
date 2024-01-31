@@ -11,3 +11,4 @@ vite.config.ts.timestamp-*
 local.db
 /dev-dist
 dev-dist
+local.sqlite

@@ -19,11 +19,8 @@
 	{@html webManifestLink}
 </svelte:head>
 <ParaglideJS {i18n}>
-	{#if data.user}
-		<Header user={{ username: data.user.username, email: data.user.email }}></Header>
-	{:else}
-		<!-- Handle the case when data.user is null -->
-	{/if}
+	<Header user={data.user}></Header>
+	<!-- Handle the case when data.user is null -->
 	<div class="container max-w-screen-2xl">
 		<slot />
 	</div>

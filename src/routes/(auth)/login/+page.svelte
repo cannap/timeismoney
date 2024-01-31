@@ -1,24 +1,25 @@
 <script lang="ts">
 	import * as Card from '$lib/components/ui/card'
 	import { Input } from '$lib/components/ui/input'
-	import { Label } from '$lib/components/ui/label'
 	import { superForm } from 'sveltekit-superforms/client'
 	import { valibot } from 'sveltekit-superforms/adapters'
 	import type { PageData } from './$types'
 	import * as m from '$paraglide/messages.js'
-
 	import { Button } from '$lib/components/ui/button'
-	import { loginUserDefaults, loginUserSchema } from '$lib/shared/validations/auth'
+	import { loginUserSchema } from '$lib/shared/validations/auth'
 	export let data: PageData
 	const { form, errors, enhance } = superForm(data.form, {
 		validators: valibot(loginUserSchema)
 	})
 </script>
 
+<svelte:head>
+	<title>{m.login()}</title>
+</svelte:head>
 <div class="flex items-center justify-center md:h-[90.5vh]">
 	<Card.Root class="md:w-[400px]">
 		<Card.Header class="space-y-1">
-			<Card.Title class="text-2xl">{m.login_to_continue()}</Card.Title>
+			<Card.Title class="text-2xl">{m.login()}</Card.Title>
 			<Card.Description>{m.enter_username_and_password()}</Card.Description>
 		</Card.Header>
 		<form method="post" use:enhance>
@@ -51,10 +52,8 @@
 		</form>
 		<Card.Footer>
 			<div>
-				Don't have an account? <a
-					href="/register"
-					class="text-blue-500 underline underline-offset-1">Sign Up</a
-				>
+				{m.dont_have_account()}
+				<a href="/register" class="text-blue-500 underline underline-offset-1">{m.signup()}</a>
 			</div>
 		</Card.Footer>
 	</Card.Root>

@@ -1,15 +1,15 @@
 <script lang="ts">
-	import { goto } from '$app/navigation'
-	import { page } from '$app/stores'
 	import LanguageSwitcher from './LanguageSwitcher.svelte'
-	import { i18n } from '$lib/i18n'
 
 	import ModeToggler from './ModeToggler.svelte'
-	import Button from './ui/button/button.svelte'
 	import UserDropdown from './UserDropdown.svelte'
-	import { string } from 'valibot'
+	import Button from './ui/button/button.svelte'
 
-	export let user: { username: string; email: string } | undefined
+	interface IUser {
+		username: string
+		email: string
+	}
+	export let user: IUser | null
 </script>
 
 <header
@@ -19,7 +19,12 @@
 		<div class="ml-auto flex items-center space-x-4">
 			<ModeToggler></ModeToggler>
 			<LanguageSwitcher></LanguageSwitcher>
-			<UserDropdown {user}></UserDropdown>
+			{#if user}
+				<UserDropdown {user}></UserDropdown>
+			{:else}
+				<Button variant="outline" href="login">Anmelden</Button>
+				<Button variant="secondary" href="register">Registrieren</Button>
+			{/if}
 		</div>
 	</div>
 </header>
