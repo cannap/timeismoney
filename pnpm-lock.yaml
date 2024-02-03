@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@inlang/paraglide-js-adapter-sveltekit':
-    specifier: ^0.2.5
-    version: 0.2.5(@sinclair/typebox@0.31.28)(@sveltejs/kit@2.5.0)
+    specifier: ^0.3.2
+    version: 0.3.2(@sinclair/typebox@0.31.28)(@sveltejs/kit@2.5.0)
   '@libsql/client':
     specifier: 0.4.0-pre.7
     version: 0.4.0-pre.7
@@ -15,8 +15,8 @@ dependencies:
     specifier: ^1.0.0
     version: 1.0.0(lucia@3.0.1)
   bits-ui:
-    specifier: ^0.15.1
-    version: 0.15.1(svelte@4.2.9)
+    specifier: ^0.16.0
+    version: 0.16.0(svelte@4.2.9)
   clsx:
     specifier: ^2.1.0
     version: 2.1.0
@@ -36,11 +36,11 @@ dependencies:
     specifier: ^3.0.1
     version: 3.0.1
   lucide-svelte:
-    specifier: ^0.316.0
-    version: 0.316.0(svelte@4.2.9)
+    specifier: ^0.321.0
+    version: 0.321.0(svelte@4.2.9)
   mode-watcher:
-    specifier: ^0.1.2
-    version: 0.1.2(svelte@4.2.9)
+    specifier: ^0.2.0
+    version: 0.2.0(svelte@4.2.9)
   oslo:
     specifier: ^1.0.3
     version: 1.0.3
@@ -98,8 +98,8 @@ devDependencies:
     specifier: ^16.4.1
     version: 16.4.1
   drizzle-kit:
-    specifier: ^0.20.13
-    version: 0.20.13
+    specifier: ^0.20.14
+    version: 0.20.14
   eslint:
     specifier: ^8.56.0
     version: 8.56.0
@@ -134,8 +134,8 @@ devDependencies:
     specifier: ^3.6.3
     version: 3.6.3(@babel/core@7.23.9)(postcss-load-config@5.0.2)(postcss@8.4.33)(sass@1.70.0)(svelte@4.2.9)
   sveltekit-superforms:
-    specifier: 2.0.0-alpha.34
-    version: 2.0.0-alpha.34(@sveltejs/kit@2.5.0)(@types/json-schema@7.0.15)(esbuild-runner@2.2.2)(esbuild@0.20.0)(svelte@4.2.9)
+    specifier: 2.0.0-alpha.42
+    version: 2.0.0-alpha.42(@sveltejs/kit@2.5.0)(@types/json-schema@7.0.15)(esbuild-runner@2.2.2)(esbuild@0.20.0)(svelte@4.2.9)
   tailwindcss:
     specifier: ^3.4.1
     version: 3.4.1
@@ -2026,8 +2026,8 @@ packages:
     resolution: {integrity: sha512-9TANp6GPoMtYzQdt54kfAyMmz1+osLlXdg2ENroU7zzrtflTLrrC/lgrIfaSe+Wu0b89GKccT7vxXA0MoAIO+Q==}
     dev: false
 
-  /@gcornut/valibot-json-schema@0.0.21(@types/json-schema@7.0.15)(esbuild-runner@2.2.2)(esbuild@0.20.0)(valibot@0.25.0):
-    resolution: {integrity: sha512-uTuG5WGRudutXNP0nUzzdvYDV6sUHby2kDxbZWSY/IO/vpNu4T6//nRoDB1M2qaf2hmoPtE7iC6X6OT4J4PG3w==}
+  /@gcornut/valibot-json-schema@0.0.22(@types/json-schema@7.0.15)(esbuild-runner@2.2.2)(esbuild@0.20.0)(valibot@0.27.1):
+    resolution: {integrity: sha512-aUrIDndl7KJF1LruNMpGFMIQRNwB4pV5YhiTvgmIKkjet+OhEmX5ZfaET8MQQ+Br0Dd6fQgVtNbxhmyLPDB1+A==}
     hasBin: true
     requiresBuild: true
     peerDependencies:
@@ -2039,7 +2039,7 @@ packages:
       '@types/json-schema': 7.0.15
       esbuild: 0.20.0
       esbuild-runner: 2.2.2(esbuild@0.20.0)
-      valibot: 0.25.0
+      valibot: 0.27.1
     dev: true
     optional: true
 
@@ -2130,28 +2130,17 @@ packages:
       '@inlang/plugin': 2.4.3(@sinclair/typebox@0.31.28)
       '@sinclair/typebox': 0.31.28
 
-  /@inlang/paraglide-js-adapter-sveltekit@0.2.5(@sinclair/typebox@0.31.28)(@sveltejs/kit@2.5.0):
-    resolution: {integrity: sha512-Y7grWCDexb+0HPHvL+xMRSVgaeVarPTKFXPaxlYXXV9vS4u+pSAu6oV2wl69fwiBwlOSeSfg3SVtM+uglPFD3g==}
+  /@inlang/paraglide-js-adapter-sveltekit@0.3.2(@sinclair/typebox@0.31.28)(@sveltejs/kit@2.5.0):
+    resolution: {integrity: sha512-nmPLyOUroR/DawIQQGuyagxSP2oo6arzK7lX6gShOtYzCO5fsq7up0KNJSPgwwTGeBp/T1ELwoGNOl0lIHaYLw==}
     peerDependencies:
       '@sveltejs/kit': ^2.4.3
     dependencies:
-      '@inlang/paraglide-js-adapter-vite': 1.2.10(@sinclair/typebox@0.31.28)
+      '@inlang/paraglide-js-adapter-vite': 1.2.11(@sinclair/typebox@0.31.28)
       '@sveltejs/kit': 2.5.0(@sveltejs/vite-plugin-svelte@3.0.2)(svelte@4.2.9)(vite@5.0.12)
       dedent: 1.5.1
+      devalue: 4.3.2
       magic-string: 0.30.6
       svelte: 4.2.9
-    transitivePeerDependencies:
-      - '@sinclair/typebox'
-      - babel-plugin-macros
-      - debug
-    dev: false
-
-  /@inlang/paraglide-js-adapter-unplugin@1.3.3(@sinclair/typebox@0.31.28):
-    resolution: {integrity: sha512-azaCOpBGOQg+zMGFFhJkeMx2i33pJTjPL/mykiBc1BGzHeLObc45V/P1kAQwRbK5gtoqNSAYDGUSTepKecmmFA==}
-    dependencies:
-      '@inlang/paraglide-js': 1.2.2(@sinclair/typebox@0.31.28)
-      '@inlang/sdk': 0.26.1
-      unplugin: 1.5.1
     transitivePeerDependencies:
       - '@sinclair/typebox'
       - babel-plugin-macros
@@ -2169,17 +2158,6 @@ packages:
       - '@sinclair/typebox'
       - babel-plugin-macros
       - debug
-    dev: true
-
-  /@inlang/paraglide-js-adapter-vite@1.2.10(@sinclair/typebox@0.31.28):
-    resolution: {integrity: sha512-ZCr53ME1M8EEWE631rNM4EgEJIUyJ5ad/oNLUkFl2DvLGj00tFHak1sn+szyM+Ag7Gz17AicEeuYaGaLOcyoig==}
-    dependencies:
-      '@inlang/paraglide-js-adapter-unplugin': 1.3.3(@sinclair/typebox@0.31.28)
-    transitivePeerDependencies:
-      - '@sinclair/typebox'
-      - babel-plugin-macros
-      - debug
-    dev: false
 
   /@inlang/paraglide-js-adapter-vite@1.2.11(@sinclair/typebox@0.31.28):
     resolution: {integrity: sha512-LMZo2CLPl/YyWka81pbKBFKy27wVNPQGk5lnhFLCdYOPdth/pWHC1BNDA91ey7JHgPtrfepJUcAQlXAN1+fh6w==}
@@ -2189,7 +2167,6 @@ packages:
       - '@sinclair/typebox'
       - babel-plugin-macros
       - debug
-    dev: true
 
   /@inlang/paraglide-js@1.1.1(@sinclair/typebox@0.31.28):
     resolution: {integrity: sha512-1M9aeEmh2kfgz3UG9IDg71uXHDpPnyFqYTx1Wid66nJz+38DRD63FwIryzls1JUuAC6AK46i/xw5Pez530wAig==}
@@ -3970,8 +3947,8 @@ packages:
     dependencies:
       dequal: 2.0.3
 
-  /arktype@1.0.28-alpha:
-    resolution: {integrity: sha512-cjakiZXXa4+y1OL0oFk0HRjIrEwJhNNvkqXkiR53SOpyKHwSqFrjrQkY4K8MlnQybRhd/y4OG4NVDR1Ea4WDkQ==}
+  /arktype@1.0.29-alpha:
+    resolution: {integrity: sha512-glMLgVhIQRSkR3tymiS+POAcWVJH09sfrgic0jHnyFL8BlhHAJZX2BzdImU9zYr1y9NBqy+U93ZNrRTHXsKRDw==}
     requiresBuild: true
     dev: true
     optional: true
@@ -4101,8 +4078,8 @@ packages:
     resolution: {integrity: sha512-jDctJ/IVQbZoJykoeHbhXpOlNBqGNcwXJKJog42E5HDPUwQTSdjCHdihjj0DlnheQ7blbT6dHOafNAiS8ooQKA==}
     engines: {node: '>=8'}
 
-  /bits-ui@0.15.1(svelte@4.2.9):
-    resolution: {integrity: sha512-1Np8bT6W6SC2tKESfm0CySW+7+xU5S0GuUZqIxC41atZE3WIRiRlzXEYHxW88w6UaLFzZ51ns4E7pchkdV5XCQ==}
+  /bits-ui@0.16.0(svelte@4.2.9):
+    resolution: {integrity: sha512-HEkuVDyUG9dTWtKujKpdDsGOe9GRmuYOEF9yGbjVwNazxMQDQa9deUX8vM3ofGBWaJgr1cEu88p38kP5Z5gQ8w==}
     peerDependencies:
       svelte: ^4.0.0
     dependencies:
@@ -4532,8 +4509,8 @@ packages:
       wordwrap: 1.0.0
     dev: true
 
-  /drizzle-kit@0.20.13:
-    resolution: {integrity: sha512-j9oZSQXNWG+KBJm0Sg3S/zJpncHGKnpqNfFuM4NUxUMGTcihDHhP9SW6Jncqwb5vsP1Xm0a8JLm3PZUIspC/oA==}
+  /drizzle-kit@0.20.14:
+    resolution: {integrity: sha512-0fHv3YIEaUcSVPSGyaaBfOi9bmpajjhbJNdPsRMIUvYdLVxBu9eGjH8mRc3Qk7HVmEidFc/lhG1YyJhoXrn5yA==}
     hasBin: true
     dependencies:
       '@drizzle-team/studio': 0.0.39
@@ -5801,6 +5778,10 @@ packages:
       ms: 2.1.3
       semver: 7.5.4
 
+  /just-clone@6.2.0:
+    resolution: {integrity: sha512-1IynUYEc/HAwxhi3WDpIpxJbZpMCvvrrmZVqvj9EhpvbH8lls7HhdhiByjL7DkAaWlLIzpC0Xc/VPvy/UxLNjA==}
+    dev: true
+
   /jwa@1.4.1:
     resolution: {integrity: sha512-qiLX/xhEEFKUAJ6FiBMbes3w9ATzyk5W7Hvzpa/SLYdxNtng+gcurvrI7TbACjIXlsJyr05/S1oUhZrc63evQA==}
     dependencies:
@@ -5822,11 +5803,6 @@ packages:
   /kleur@4.1.5:
     resolution: {integrity: sha512-o+NO+8WrRiQEE4/7nwRJhN1HWpVmJm511pBHUxPLtp0BUISzlBplORYSmTclCnJvQq2tKu/sgl3xVpkc7ZWuQQ==}
     engines: {node: '>=6'}
-
-  /klona@2.0.6:
-    resolution: {integrity: sha512-dhG34DXATL5hSxJbIexCft8FChFXtmskoZYnoPWjXQuebWYCNkVeV3KkGegCK9CP1oswI/vQibS2GY7Em/sJJA==}
-    engines: {node: '>= 8'}
-    dev: true
 
   /known-css-properties@0.29.0:
     resolution: {integrity: sha512-Ne7wqW7/9Cz54PDt4I3tcV+hAyat8ypyOGzYRJQfdxnnjeWsTxt1cy8pjvvKeI5kfXuyvULyeeAvwvvtAX3ayQ==}
@@ -5967,10 +5943,10 @@ packages:
       oslo: 1.0.1
     dev: false
 
-  /lucide-svelte@0.316.0(svelte@4.2.9):
-    resolution: {integrity: sha512-6mtBw/aU1IIVXfN6AXLSwsbeCFX/2/tTy84rrDTDsOq7BEijFbvObQsPEWPxJ0EyCjUXOYfAvfkZzMosYjyGqA==}
+  /lucide-svelte@0.321.0(svelte@4.2.9):
+    resolution: {integrity: sha512-sp5ogKKo8Oth6mcsIwN1HGudeshzSjtTGVwtISD/GdEjBaG4z3fwF6JupnnLEVPXC+TCETwcn6y3Y/Z3ljbs/Q==}
     peerDependencies:
-      svelte: '>=3 <5'
+      svelte: ^3 || ^4 || ^5.0.0-next.42
     dependencies:
       svelte: 4.2.9
     dev: false
@@ -6116,8 +6092,8 @@ packages:
       ufo: 1.3.2
     dev: true
 
-  /mode-watcher@0.1.2(svelte@4.2.9):
-    resolution: {integrity: sha512-XTdPCdqC3kqSvB+Q262Kor983YJkkB2Z3vj9uqg5IqKQpOdiz+xB99Jihp8sWbyM67drC7KKp0Nt5FzCypZi2g==}
+  /mode-watcher@0.2.0(svelte@4.2.9):
+    resolution: {integrity: sha512-NCo72EColWhNjMWXr+U9hjJS6ixCFEADfvj44XFLUWEkR/dsbJxnOX6bkxM+i1DWmP/nRhKI+rr2Z2nt+TZSGA==}
     peerDependencies:
       svelte: ^4.0.0
     dependencies:
@@ -7291,28 +7267,29 @@ packages:
       magic-string: 0.30.6
       periscopic: 3.1.0
 
-  /sveltekit-superforms@2.0.0-alpha.34(@sveltejs/kit@2.5.0)(@types/json-schema@7.0.15)(esbuild-runner@2.2.2)(esbuild@0.20.0)(svelte@4.2.9):
-    resolution: {integrity: sha512-QjDcUQ2my8DCB2mVqqrj0Nuv+eVJhbjIaUhI8vMidK9ARD0Xc1GUUPLCD45g6P7qEIzi1YVt+elh+zWTNhkgZQ==}
+  /sveltekit-superforms@2.0.0-alpha.42(@sveltejs/kit@2.5.0)(@types/json-schema@7.0.15)(esbuild-runner@2.2.2)(esbuild@0.20.0)(svelte@4.2.9):
+    resolution: {integrity: sha512-WobWBOCMTroedhs0jUtPJfYPCBLivMZ8Lz8ba0vQuMr7eVhIiNpX99GZgzlbxMI0Nbnwc2rhMrDuHULtG94M2A==}
+    requiresBuild: true
     peerDependencies:
       '@sveltejs/kit': 1.x || 2.x
       svelte: 3.x || 4.x
     dependencies:
       '@sveltejs/kit': 2.5.0(@sveltejs/vite-plugin-svelte@3.0.2)(svelte@4.2.9)(vite@5.0.12)
       devalue: 4.3.2
-      klona: 2.0.6
+      just-clone: 6.2.0
       memoize-weak: 1.0.2
       svelte: 4.2.9
-      ts-deepmerge: 6.2.1
+      ts-deepmerge: 7.0.0
     optionalDependencies:
-      '@gcornut/valibot-json-schema': 0.0.21(@types/json-schema@7.0.15)(esbuild-runner@2.2.2)(esbuild@0.20.0)(valibot@0.25.0)
+      '@gcornut/valibot-json-schema': 0.0.22(@types/json-schema@7.0.15)(esbuild-runner@2.2.2)(esbuild@0.20.0)(valibot@0.27.1)
       '@sinclair/typebox': 0.32.13
       '@sodaru/yup-to-json-schema': 2.0.1
       ajv: 8.12.0
       ajv-formats: 2.1.1(ajv@8.12.0)
-      arktype: 1.0.28-alpha
+      arktype: 1.0.29-alpha
       joi: 17.12.1
       superstruct: 1.0.3
-      valibot: 0.25.0
+      valibot: 0.27.1
       yup: 1.3.3
       zod: 3.22.4
       zod-to-json-schema: 3.22.4(zod@3.22.4)
@@ -7493,8 +7470,8 @@ packages:
       typescript: 5.3.3
     dev: true
 
-  /ts-deepmerge@6.2.1:
-    resolution: {integrity: sha512-8CYSLazCyj0DJDpPIxOFzJG46r93uh6EynYjuey+bxcLltBeqZL7DMfaE5ZPzZNFlav7wx+2TDa/mBl8gkTYzw==}
+  /ts-deepmerge@7.0.0:
+    resolution: {integrity: sha512-WZ/iAJrKDhdINv1WG6KZIGHrZDar6VfhftG1QJFpVbOYZMYJLJOvZOo1amictRXVdBXZIgBHKswMTXzElngprA==}
     engines: {node: '>=14.13.1'}
     dev: true
 
@@ -7691,15 +7668,8 @@ packages:
   /util-deprecate@1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
 
-  /valibot@0.25.0:
-    resolution: {integrity: sha512-cmD0ca15oyAbT75iYLNW6uU6doAeIwYfOshpXka/E1Bx4frzbkrgb7gvkI7K0YK/DVOksei4FfxWfRoBP3NFTg==}
-    requiresBuild: true
-    dev: true
-    optional: true
-
   /valibot@0.27.1:
     resolution: {integrity: sha512-k57/5/kMwMjiVP0LUMpa+n4ihSemuXshz1ND4fftKw1bkHZYN/TnHcbjaEie3K7FwAceiOgugLZPjSaNxdygeg==}
-    dev: false
 
   /vite-node@1.2.2(sass@1.70.0):
     resolution: {integrity: sha512-1as4rDTgVWJO3n1uHmUYqq7nsFgINQ9u+mRcXpjeOMJUmviqNKjcZB7UfRZrlM7MjYXMKpuWp5oGkjaFLnjawg==}

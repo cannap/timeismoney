@@ -5,22 +5,8 @@
     {
       "idx": 0,
       "version": "5",
-      "when": 1705573023004,
-      "tag": "0000_military_boom_boom",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "5",
-      "when": 1705825729443,
-      "tag": "0001_secret_kid_colt",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "5",
-      "when": 1706108501141,
-      "tag": "0002_steep_vengeance",
+      "when": 1706806698294,
+      "tag": "0000_equal_malcolm_colcord",
       "breakpoints": true
     }
   ]

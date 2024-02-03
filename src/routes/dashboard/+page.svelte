@@ -2,7 +2,6 @@
 	import * as Card from '$lib/components/ui/card'
 
 	import type { PageData } from './$types'
-	import { Button } from '$lib/components/ui/button'
 	import MainContent from '$lib/components/MainContent.svelte'
 	export let data: PageData
 </script>

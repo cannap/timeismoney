@@ -4,7 +4,7 @@ import { generateId } from 'lucia'
 import { Argon2id } from 'oslo/password'
 import { db } from '$lib/server/db'
 import { usersTable } from '$db/schema'
-import { registerUserSchema, registerUserDefaults } from '$lib/shared/validations/auth'
+import { registerUserSchema } from '$lib/shared/validations/auth'
 import type { Actions, PageServerLoad } from './$types'
 import { pick } from 'valibot'
 import { superValidate, setError } from 'sveltekit-superforms/server'
@@ -17,19 +17,14 @@ export const load: PageServerLoad = async (event) => {
 	}
 
 	const form = await superValidate(
-		valibot(pick(registerUserSchema, ['username', 'password', 'email']), {
-			defaults: registerUserDefaults
-		})
+		valibot(pick(registerUserSchema, ['username', 'password', 'email']))
 	)
 	return { form }
 }
 export type TInsertUserSchema = Input<typeof registerUserSchema>
 export const actions: Actions = {
 	default: async (event) => {
-		const form = await superValidate(
-			event.request,
-			valibot(registerUserSchema, { defaults: registerUserDefaults })
-		)
+		const form = await superValidate(event.request, valibot(registerUserSchema))
 
 		if (!form.valid) {
 			// Again, return { form } and things will just work.

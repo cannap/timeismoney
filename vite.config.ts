@@ -14,6 +14,7 @@ export default defineConfig({
 		sveltekit(),
 		SvelteKitPWA({
 			mode: 'development',
+
 			//	devOptions: { enabled: true },
 			strategies: 'generateSW'
 			//filename: 'sw.js', // or `my-sw.ts`

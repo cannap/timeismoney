@@ -3,8 +3,7 @@
 	import { superForm } from 'sveltekit-superforms/client'
 	import Input from '$lib/components/ui/input/input.svelte'
 	import * as m from '$paraglide/messages.js'
-
-	import { valibot } from 'sveltekit-superforms/adapters'
+	import { valibotClient } from 'sveltekit-superforms/adapters'
 	import { registerUserSchema } from '$validations/auth'
 	import * as Card from '$lib/components/ui/card'
 	import Button from '$lib/components/ui/button/button.svelte'
@@ -12,7 +11,7 @@
 	export let data: PageData
 
 	const { form, errors, enhance } = superForm(data.form, {
-		validators: valibot(registerUserSchema)
+		validators: valibotClient(registerUserSchema)
 	})
 </script>
 
@@ -29,7 +28,7 @@
 						type="text"
 						name="username"
 						id="username"
-						label="Benutzername"
+						label={m.username()}
 						error={$errors.username}
 						bind:value={$form.username}
 					/>

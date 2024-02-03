@@ -1,5 +1,5 @@
-import { string, minLength, number, object, transform, optional } from 'valibot'
-import { addHttps } from '$lib/utils/addHttps'
+import { parse } from 'svelte/compiler'
+import { string, minLength, number, object, optional, transform } from 'valibot'
 /**
  * 	id: text('id').notNull().primaryKey(),
 	url: text('url'),
@@ -9,8 +9,8 @@ import { addHttps } from '$lib/utils/addHttps'
  */
 export const createCompanySchema = object({
 	name: string([minLength(1, 'Bitte geben sie einen Firmennamen ein ')]),
-	size: optional(number()),
-	url: optional(transform(string(), addHttps))
+	size: optional(string()),
+	url: optional(string())
 })
 
 export type CreateCompanySchema = typeof createCompanySchema

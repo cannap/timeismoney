@@ -2,14 +2,14 @@
 	import * as Card from '$lib/components/ui/card'
 	import { Input } from '$lib/components/ui/input'
 	import { superForm } from 'sveltekit-superforms/client'
-	import { valibot } from 'sveltekit-superforms/adapters'
+	import { valibotClient } from 'sveltekit-superforms/adapters'
 	import type { PageData } from './$types'
 	import * as m from '$paraglide/messages.js'
 	import { Button } from '$lib/components/ui/button'
 	import { loginUserSchema } from '$lib/shared/validations/auth'
 	export let data: PageData
 	const { form, errors, enhance } = superForm(data.form, {
-		validators: valibot(loginUserSchema)
+		validators: valibotClient(loginUserSchema)
 	})
 </script>
 

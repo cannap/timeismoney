@@ -21,8 +21,8 @@ export const companiesTable = sqliteTable('companies', {
 	name: text('name').notNull(),
 	size: integer('size'),
 	leaderId: text('leader_id').notNull(),
-	createdAt: integer('created_at', { mode: 'timestamp' }).default(sql`CURRENT_TIMESTAMP`),
-	updatedAt: integer('updated_at', { mode: 'timestamp' }).default(sql`CURRENT_TIMESTAMP`)
+	createdAt: integer('created_at', { mode: 'timestamp_ms' }).default(sql`CURRENT_TIMESTAMP`),
+	updatedAt: integer('updated_at', { mode: 'timestamp_ms' }).default(sql`CURRENT_TIMESTAMP`)
 })
 
 export const insertCompanySchema = createInsertSchema(companiesTable)

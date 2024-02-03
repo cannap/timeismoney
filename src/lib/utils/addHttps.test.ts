@@ -13,4 +13,16 @@ describe('addHttps', () => {
 	it('should not change the URL if it already starts with https://', () => {
 		expect(addHttps('https://example.com')).toBe('https://example.com')
 	})
+
+	it('should return undefined if the URL is empty', () => {
+		expect(addHttps('')).toBeUndefined()
+	})
+
+	it('should return undefined if the URL is null', () => {
+		expect(addHttps(null)).toBeUndefined()
+	})
+
+	it('should return undefined if the URL is undefined', () => {
+		expect(addHttps(undefined)).toBeUndefined()
+	})
 })
