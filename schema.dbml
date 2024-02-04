@@ -1,0 +1,51 @@
+table companies {
+  id integer [pk, not null, increment]
+  url text
+  name text [not null]
+  size integer
+  leader_id text [not null]
+  created_at integer [default: `CURRENT_TIMESTAMP`]
+  updated_at integer [default: `CURRENT_TIMESTAMP`]
+}
+
+table project {
+  id integer [pk, not null, increment]
+  name text [not null]
+  user_id integer [not null]
+  created_at integer [default: `CURRENT_TIMESTAMP`]
+  updated_at integer [default: `CURRENT_TIMESTAMP`]
+}
+
+table user_session {
+  id text [pk, not null]
+  user_id text [not null]
+  expires_at integer [not null]
+}
+
+table task {
+  id integer [pk, not null, increment]
+  name text [not null]
+  created_at integer [default: `CURRENT_TIMESTAMP`]
+  updated_at integer [default: `CURRENT_TIMESTAMP`]
+  user_id text [not null]
+}
+
+table time {
+  id integer [pk, not null, increment]
+  action text [not null]
+  timestamp_ms text [default: `CURRENT_TIMESTAMP`]
+  timestamp_ms text [default: `CURRENT_TIMESTAMP`]
+  stop_id integer
+  task_id integer
+}
+
+table user {
+  id text [pk, not null, unique]
+  username text [not null, unique]
+  password text [not null]
+  email text [not null, unique]
+  created_at integer [not null]
+  updated_at integer [not null]
+}
+
+ref: companies.leader_id > user.id

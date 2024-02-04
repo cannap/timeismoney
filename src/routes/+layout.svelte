@@ -9,21 +9,16 @@
 	import type { LayoutServerData } from './$types'
 	import { ParaglideJS } from '@inlang/paraglide-js-adapter-sveltekit'
 	import { i18n } from '$lib/i18n'
-	export let data: LayoutServerData
 	$: webManifestLink = pwaInfo ? pwaInfo.webManifest.linkTag : ''
 </script>
 
 <ModeWatcher />
-
 <svelte:head>
 	{@html webManifestLink}
 </svelte:head>
 <ParaglideJS {i18n}>
-	<Header user={data.user}></Header>
 	<!-- Handle the case when data.user is null -->
-	<div class="container max-w-screen-2xl">
-		<slot />
-	</div>
+	<slot />
 </ParaglideJS>
 
 {#await import('$lib/components/ReloadPrompt.svelte') then { default: ReloadPrompt }}

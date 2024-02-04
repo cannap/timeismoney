@@ -17,8 +17,15 @@
 </script>
 
 <MainContent>
-	<form class="flex flex-col gap-2" method="post" use:enhance action="?/createCompany">
-		<div class="grid grid-flow-col gap-4">
+	<form class="flex flex-col flex-wrap gap-2" method="post" use:enhance action="?/createCompany">
+		{#if $message}
+			<Alert.Root>
+				<AlertCircle class="h-4 w-4" />
+				<Alert.Title>Success</Alert.Title>
+				<Alert.Description>{$message}</Alert.Description>
+			</Alert.Root>
+		{/if}
+		<div class="grid grid-flow-col flex-wrap gap-4">
 			<Input
 				id="name"
 				class="w-full"
@@ -42,12 +49,5 @@
 		<Input id="url" error={$errors.url} label="Webseite" name="url" bind:value={$form.url} />
 
 		<Button type="submit">Erstellen</Button>
-		{#if $message}
-			<Alert.Root>
-				<AlertCircle class="h-4 w-4" />
-				<Alert.Title>Success</Alert.Title>
-				<Alert.Description>{$message}</Alert.Description>
-			</Alert.Root>
-		{/if}
 	</form>
 </MainContent>

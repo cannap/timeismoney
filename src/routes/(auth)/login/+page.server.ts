@@ -16,7 +16,7 @@ export const load: PageServerLoad = async (event) => {
 }
 
 export const actions: Actions = {
-	createCompany: async (event) => {
+	default: async (event) => {
 		const form = await superValidate(event.request, valibot(loginUserSchema))
 
 		const existingUser = await db.query.usersTable.findFirst({

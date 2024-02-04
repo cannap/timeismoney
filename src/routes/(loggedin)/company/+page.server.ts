@@ -13,6 +13,7 @@ export const load: PageServerLoad = async ({ request, locals }) => {
 	}
 
 	const form = await superValidate(request, valibot(createCompanySchema))
+
 	const companies = await db.query.companiesTable.findMany({
 		limit: 5,
 		where: (companiesTable, { eq }) => eq(companiesTable.leaderId, locals.user.id),
