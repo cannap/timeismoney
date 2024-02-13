@@ -4,7 +4,6 @@ import { db } from './db'
 import { sessionTable, usersTable } from './db/schema'
 import { DrizzleSQLiteAdapter } from '@lucia-auth/adapter-drizzle'
 import { redirect } from '@sveltejs/kit'
-DrizzleSQLiteAdapter
 //const adapter = new BetterSQLite3Adapter(db); // your adapter
 const adapter = new DrizzleSQLiteAdapter(db, sessionTable, usersTable)
 export const lucia = new Lucia(adapter, {
