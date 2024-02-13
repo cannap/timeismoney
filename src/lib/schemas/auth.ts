@@ -18,3 +18,4 @@ export const loginUserSchema = object({
 	username: string([minLength(1, 'Bitte geben Sie einen Benutzernamen ein.')]),
 	password: string([minLength(1, 'Bitte geben Sie ein Passwort ein.')])
 })
+export type TLoginUserSchema = Input<typeof loginUserSchema>

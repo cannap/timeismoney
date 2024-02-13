@@ -9,7 +9,7 @@
 				<SvelteLink path="/dashboard">Dashboard</SvelteLink>
 			</li>
 			<li class="p-4">
-				<SvelteLink path="/dashboard">Stunden</SvelteLink>
+				<SvelteLink path="/clients">Kunden</SvelteLink>
 			</li>
 		</ul>
 	</nav>

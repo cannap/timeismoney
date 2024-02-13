@@ -41,6 +41,7 @@
 			</div>
 		</DropdownMenu.Label>
 		<DropdownMenu.Separator />
+
 		<DropdownMenu.Item on:click={handleSignOut}>{m.logout()}</DropdownMenu.Item>
 	</DropdownMenu.Content>
 </DropdownMenu.Root>

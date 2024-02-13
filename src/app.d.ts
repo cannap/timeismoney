@@ -1,7 +1,7 @@
 // See https://kit.svelte.dev/docs/types#app
 // for information about these interfaces
-import 'vite-plugin-pwa/svelte'
-import 'vite-plugin-pwa/info'
+/// <reference types="vite-plugin-pwa/info" />
+
 declare global {
 	namespace App {
 		interface Locals {

@@ -4,33 +4,63 @@
 	import Play from 'lucide-svelte/icons/play'
 	import Pause from 'lucide-svelte/icons/pause'
 	import Clock from 'lucide-svelte/icons/clock'
+	import { onDestroy } from 'svelte'
 
-	let interval: string | number | NodeJS.Timeout | null | undefined = null
+	let interval: number | null = null
 	let isRunning = false
 	let original = 0
 	let timer = original
-	let lastTime = 0
+
+	//Gib mir eeinen Zeistempel in 20 minuten in der Zukunft
+	const getFutureTime = (minutes: number) => {
+		const now = new Date()
+		now.setMinutes(now.getMinutes() + minutes)
+		return now
+	}
+
+	const getDifferenceInSeconds = (start: Date = new Date(), end: Date = getFutureTime(20)) => {
+		const diff = Math.abs(start.getTime() - end.getTime())
+		return Math.floor(diff / 1000)
+	}
+
+	//Formattiere mir die Sekunden in Minute nund Stunden
+	function formatTime(seconds: number) {
+		const hours = Math.floor(seconds / 3600)
+		const minutes = Math.floor((seconds % 3600) / 60)
+		const formattedHours = hours.toString().padStart(2, '0')
+		const formattedMinutes = minutes.toString().padStart(2, '0')
+		const formattedSeconds = (seconds % 60).toString().padStart(2, '0')
+		return `${formattedHours}:${formattedMinutes}:${formattedSeconds}`
+	}
+
+	const a = getDifferenceInSeconds()
+
+	console.log(formatTime(a))
+
 	const stopTimer = () => {
 		if (interval) {
 			clearInterval(interval)
+
 			interval = null
 			isRunning = false
-			lastTime = timer
 			timer = 0
 		}
 	}
-	const toggleTimer = () => {
+	const toggleTimer = async () => {
 		if (isRunning) {
 			stopTimer()
 			return
 		}
 		isRunning = true
-		//isRunning = !isRunning
+
 		interval = setInterval(() => {
 			timer++
-		}, 1000)
+		}, 1000) as unknown as number
 	}
 
+	onDestroy(() => {
+		stopTimer()
+	})
 	$: hours = Math.floor(timer / 3600)
 	$: minutes = Math.floor((timer % 3600) / 60)
 	$: seconds = Math.floor(timer % 60)

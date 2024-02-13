@@ -15,5 +15,5 @@ export const POST: RequestHandler = async (event) => {
 			...sessionCookie.attributes
 		})
 	}
-	return redirect(302, '/register')
+	redirect(302, '/register')
 }

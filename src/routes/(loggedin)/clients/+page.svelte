@@ -1,18 +1,23 @@
 <script lang="ts">
 	import { valibotClient } from 'sveltekit-superforms/adapters'
-	import type { PageData, ActionData } from './$types'
+	import type { PageData } from './$types'
 	import { superForm } from 'sveltekit-superforms'
-	import { createCompanySchema } from '$validations/company'
+	import { createClientSchema } from '$lib/schemas/client'
 	import Button from '$lib/components/ui/button/button.svelte'
 	import Input from '$lib/components/ui/input/input.svelte'
 	import * as Alert from '$lib/components/ui/alert'
 	import AlertCircle from 'lucide-svelte/icons/check'
 	import MainContent from '$lib/components/MainContent.svelte'
-
+	import { toast } from 'svelte-sonner'
 	export let data: PageData
 
 	const { enhance, form, errors, message } = superForm(data.form, {
-		validators: valibotClient(createCompanySchema)
+		validators: valibotClient(createClientSchema),
+		onResult: ({ result, cancel }) => {
+			if (result.type === 'success') {
+				toast.success('Kunde erfolgreich erstellt.')
+			}
+		}
 	})
 </script>
 
@@ -33,16 +38,6 @@
 				label="Name"
 				name="name"
 				bind:value={$form.name}
-			/>
-
-			<Input
-				class="w-full"
-				id="size"
-				error={$errors.size}
-				type="number"
-				label="Team Grösse"
-				name="size"
-				bind:value={$form.size}
 			/>
 		</div>
 

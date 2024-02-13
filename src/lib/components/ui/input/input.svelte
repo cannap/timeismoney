@@ -43,6 +43,7 @@
 		on:paste
 		on:input
 		{id}
+		aria-invalid={error ? 'true' : undefined}
 		{...$$restProps}
 	/>
 	{#if error}

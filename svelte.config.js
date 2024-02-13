@@ -16,12 +16,13 @@ const config = {
 		files: {
 			serviceWorker: 'src/sw.js' // or `src/my-sw.ts`
 		},
-		adapter: adapter(),
+		adapter: adapter({}),
+		csrf: { checkOrigin: false },
 		alias: {
 			$paraglide: './src/paraglide/',
 			$db: './src/lib/server/db/',
 			$forms: './src/lib/components/Forms/',
-			$validations: './src/lib/shared/validations'
+			$schema: './src/lib/schema'
 		}
 	}
 }

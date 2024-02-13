@@ -4,7 +4,7 @@
 	import Input from '$lib/components/ui/input/input.svelte'
 	import * as m from '$paraglide/messages.js'
 	import { valibotClient } from 'sveltekit-superforms/adapters'
-	import { registerUserSchema } from '$validations/auth'
+	import { registerUserSchema } from '$lib/schemas/auth'
 	import * as Card from '$lib/components/ui/card'
 	import Button from '$lib/components/ui/button/button.svelte'
 
@@ -28,6 +28,7 @@
 						type="text"
 						name="username"
 						id="username"
+						autocomplete="username"
 						label={m.username()}
 						error={$errors.username}
 						bind:value={$form.username}
@@ -38,6 +39,7 @@
 						label="Email"
 						type="text"
 						name="email"
+						autocomplete="email"
 						id="email"
 						error={$errors.email}
 						bind:value={$form.email}
@@ -49,6 +51,7 @@
 						type="password"
 						name="password"
 						id="password"
+						autocomplete="new-password"
 						error={$errors.password}
 						bind:value={$form.password}
 					/>

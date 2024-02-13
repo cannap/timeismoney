@@ -6,7 +6,7 @@
 	import type { PageData } from './$types'
 	import * as m from '$paraglide/messages.js'
 	import { Button } from '$lib/components/ui/button'
-	import { loginUserSchema } from '$lib/shared/validations/auth'
+	import { loginUserSchema } from '$lib/schemas/auth'
 	export let data: PageData
 	const { form, errors, enhance } = superForm(data.form, {
 		validators: valibotClient(loginUserSchema)
@@ -41,6 +41,7 @@
 						type="password"
 						error={$errors.password}
 						name="password"
+						autocomplete="current-password"
 						id="password"
 						bind:value={$form.password}
 					/>

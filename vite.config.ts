@@ -5,6 +5,7 @@ import { SvelteKitPWA } from '@vite-pwa/sveltekit'
 import Icons from 'unplugin-icons/vite'
 
 export default defineConfig({
+	optimizeDeps: { holdUntilCrawlEnd :false  },
 	plugins: [
 		//basicSsl({}),
 		paraglide({

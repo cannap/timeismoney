@@ -6,6 +6,9 @@
 	export let data: PageData
 </script>
 
+<svelte:head>
+	<title>Dashboard</title>
+</svelte:head>
 <MainContent>
 	{#if !data.companies.length}
 		<p>Um zu beginnen tragen Sie eine Firma ein</p>

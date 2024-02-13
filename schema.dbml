@@ -1,9 +1,9 @@
-table companies {
+table clients {
   id integer [pk, not null, increment]
   url text
   name text [not null]
   size integer
-  leader_id text [not null]
+  creator_id text [not null]
   created_at integer [default: `CURRENT_TIMESTAMP`]
   updated_at integer [default: `CURRENT_TIMESTAMP`]
 }
@@ -11,7 +11,6 @@ table companies {
 table project {
   id integer [pk, not null, increment]
   name text [not null]
-  user_id integer [not null]
   created_at integer [default: `CURRENT_TIMESTAMP`]
   updated_at integer [default: `CURRENT_TIMESTAMP`]
 }
@@ -27,7 +26,6 @@ table task {
   name text [not null]
   created_at integer [default: `CURRENT_TIMESTAMP`]
   updated_at integer [default: `CURRENT_TIMESTAMP`]
-  user_id text [not null]
 }
 
 table time {
@@ -48,4 +46,15 @@ table user {
   updated_at integer [not null]
 }
 
-ref: companies.leader_id > user.id
+table usersToProjects {
+  user_id text [not null]
+  project_id integer [not null]
+
+  indexes {
+    (user_id, project_id) [pk]
+  }
+}
+
+ref: usersToProjects.user_id > user.id
+
+ref: usersToProjects.project_id > project.id

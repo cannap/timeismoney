@@ -1,20 +1,18 @@
 import { db } from '$db'
-import { createCompanySchema } from '$lib/shared/validations/company'
+import { createClientSchema } from '$lib/schemas/client'
 import { superValidate } from 'sveltekit-superforms/server'
 import type { Actions, PageServerLoad } from './$types'
 import { valibot } from 'sveltekit-superforms/adapters'
-import { redirect } from '@sveltejs/kit'
-import { companiesTable } from '$db/schema'
+import { ensueAuth } from '$lib/server/auth'
 
 export const load: PageServerLoad = async ({ locals }) => {
-	if (!locals.user || !locals.session) {
-		redirect(307, '/login')
-	}
-	const companies = await db.query.companiesTable.findMany({
-		where: (companies, { eq }) => eq(companies.leaderId, locals.user.id)
+	ensueAuth(locals)
+	const userId = locals?.user?.id // Declare the userId variable
+	const companies = await db.query.clientTable.findMany({
+		where: (clientTable, { eq }) => (userId ? eq(clientTable.creatorId, userId) : undefined)
 	})
 
-	const form = await superValidate(valibot(createCompanySchema), {
+	const form = await superValidate(valibot(createClientSchema), {
 		defaults: { name: 'test' }
 	})
 

@@ -3,7 +3,8 @@ import { dev } from '$app/environment'
 import { db } from './db'
 import { sessionTable, usersTable } from './db/schema'
 import { DrizzleSQLiteAdapter } from '@lucia-auth/adapter-drizzle'
-
+import { redirect } from '@sveltejs/kit'
+DrizzleSQLiteAdapter
 //const adapter = new BetterSQLite3Adapter(db); // your adapter
 const adapter = new DrizzleSQLiteAdapter(db, sessionTable, usersTable)
 export const lucia = new Lucia(adapter, {
@@ -25,11 +26,16 @@ export const lucia = new Lucia(adapter, {
 declare module 'lucia' {
 	interface Register {
 		Lucia: typeof lucia
-		DatabaseUserAttributes: DatabaseUserAttributes
+		DatabaseUserAttributes: {
+			username: string
+			email: string
+			isAdmin: boolean
+		}
 	}
 }
 
-interface DatabaseUserAttributes {
-	username: string
-	email: string
+export const ensueAuth = (locals: App.Locals) => {
+	if (!locals.user || !locals.session) {
+		redirect(303, '/login')
+	}
 }

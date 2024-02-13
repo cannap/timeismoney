@@ -1,10 +1,8 @@
-import { redirect } from '@sveltejs/kit'
 import type { LayoutServerLoad } from './$types'
+import { ensueAuth } from '$lib/server/auth'
 
 export const load: LayoutServerLoad = async ({ locals }) => {
-	if (!locals.user) {
-		redirect(302, '/login')
-	}
+	ensueAuth(locals)
 
 	return {
 		user: locals.user
