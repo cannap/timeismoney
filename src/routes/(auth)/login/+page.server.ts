@@ -4,7 +4,7 @@ import { superValidate, setError } from 'sveltekit-superforms/server'
 import { valibot } from 'sveltekit-superforms/adapters'
 import { Argon2id } from 'oslo/password'
 import { db } from '$lib/server/db'
-import { loginUserSchema } from '$lib/schemas/auth'
+import { loginUserSchema } from '$schema/auth'
 import { lucia } from '$lib/server/auth'
 export const load: PageServerLoad = async (event) => {
 	if (event.locals.user) {
