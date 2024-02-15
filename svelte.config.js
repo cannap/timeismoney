@@ -22,7 +22,7 @@ const config = {
 			$paraglide: './src/paraglide/',
 			$db: './src/lib/server/db/',
 			$forms: './src/lib/components/Forms/',
-			$schema: './src/lib/schema'
+			$schema: './src/lib/schemas/'
 		}
 	}
 }

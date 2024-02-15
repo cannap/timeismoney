@@ -3,8 +3,9 @@
 	import { cn } from '$lib/utils'
 	import type { InputEvents } from '.'
 	import Label from '../label/label.svelte'
+	import type { ValidationErrors } from 'sveltekit-superforms'
 	interface $$Props extends HTMLInputAttributes {
-		error?: string[] | undefined
+		error?: ValidationErrors
 		label?: string | undefined
 		id: string | undefined
 	}
@@ -12,7 +13,7 @@
 	type $$Events = InputEvents
 	let className: $$Props['class'] = undefined
 	export let value: $$Props['value'] = undefined
-	export let error: string[] | undefined = undefined
+	export let error: string[] | undefined
 	export let label: string | undefined = undefined
 	export let id: string = ''
 	export { className as class }
