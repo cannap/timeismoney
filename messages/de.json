@@ -15,5 +15,6 @@
 	"signup": "Registrieren",
 	"get_started": "Um zu beginnen benötigen Sie ein Konto.",
 	"logout": "Abmelden",
-	"dont_have_account": "Noch kein Konto?"
+	"dont_have_account": "Noch kein Konto?",
+	"login_success": "Sie wurden erfolgreich eingeloggt."
 }

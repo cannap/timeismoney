@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { useRegisterSW } from 'virtual:pwa-register/svelte';
-	import * as m from '$paraglide/messages';
-	import { Button } from '$lib/components/ui/button';
-	import * as Card from '$lib/components/ui/card';
+	import { useRegisterSW } from 'virtual:pwa-register/svelte'
+	import * as m from '$paraglide/messages'
+	import { Button } from '$lib/components/ui/button'
+	import * as Card from '$lib/components/ui/card'
 
 	const { needRefresh, updateServiceWorker, offlineReady } = useRegisterSW({
 		onRegistered(r: ServiceWorkerRegistration) {
@@ -11,17 +11,17 @@
 			//    console.log('Checking for sw update')
 			//    r.update()
 			// }, 20000 /* 20s for testing purposes */)
-			console.log(`SW Registered: ${r}`);
+			console.log(`SW Registered: ${r}`)
 		},
 		onRegisterError(error: Error) {
-			console.log('SW registration error', error);
+			console.log('SW registration error', error)
 		}
-	});
+	})
 	const close = () => {
-		offlineReady.set(false);
-		needRefresh.set(false);
-	};
-	$: toast = $needRefresh;
+		offlineReady.set(false)
+		needRefresh.set(false)
+	}
+	$: toast = $needRefresh
 </script>
 
 {#if toast}

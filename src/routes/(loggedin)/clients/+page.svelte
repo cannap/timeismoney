@@ -2,7 +2,7 @@
 	import { valibotClient } from 'sveltekit-superforms/adapters'
 	import type { PageData } from './$types'
 	import { superForm } from 'sveltekit-superforms'
-	import { createClientSchema } from '$lib/schemas/client'
+	import { createClientSchema } from '$schemas/client'
 	import Button from '$lib/components/ui/button/button.svelte'
 	import Input from '$lib/components/ui/input/input.svelte'
 	import * as Alert from '$lib/components/ui/alert'
@@ -45,4 +45,14 @@
 
 		<Button type="submit">Erstellen</Button>
 	</form>
+
+	{#if data.clients.length > 0}
+		<ul>
+			{#each data.clients as client}
+				<li>{client.name}</li>
+			{/each}
+		</ul>
+	{:else}
+		<p>Keine Kunden vorhanden</p>
+	{/if}
 </MainContent>

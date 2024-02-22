@@ -7,5 +7,6 @@
 
 <svelte:head>
 	<title>{m.login()}</title>
-	<Login action="?/login" data={data?.form} />
 </svelte:head>
+
+<Login dataType="form" action="?/login" data={data?.form} />

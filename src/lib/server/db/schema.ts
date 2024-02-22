@@ -14,15 +14,15 @@ export const clientTable = sqliteTable('clients', {
 
 export const insertClient = createInsertSchema(clientTable)
 
-export const sessionTable = sqliteTable('user_session', {
+export const session = sqliteTable('user_session', {
 	id: text('id').notNull().primaryKey(),
 	userId: text('user_id')
 		.notNull()
-		.references(() => usersTable.id),
+		.references(() => users.id),
 	expiresAt: integer('expires_at').notNull()
 })
 
-export const timeTable = sqliteTable('time', {
+export const times = sqliteTable('times', {
 	id: integer('id', { mode: 'number' }).notNull().primaryKey({ autoIncrement: true }),
 	action: text('action', { enum: ['start', 'stop'] }).notNull(),
 	createdAt: text('timestamp_ms').default(sql`CURRENT_TIMESTAMP`),
@@ -31,7 +31,7 @@ export const timeTable = sqliteTable('time', {
 	taskId: integer('task_id', { mode: 'number' })
 })
 
-export const usersTable = sqliteTable('user', {
+export const users = sqliteTable('users', {
 	id: text('id').notNull().primaryKey().unique(),
 	username: text('username').notNull().unique(),
 	password: text('password').notNull(),
@@ -40,50 +40,60 @@ export const usersTable = sqliteTable('user', {
 	updatedAt: integer('updated_at', { mode: 'timestamp' }).notNull()
 })
 
-export const usersRelations = relations(usersTable, ({ many }) => ({
-	projects: many(usersToProjectsTable)
+export const usersRelations = relations(users, ({ many }) => ({
+	projects: many(usersToProjects),
+	tasks: many(tasks)
 }))
 
-export const projectTable = sqliteTable('project', {
+export const projects = sqliteTable('projects', {
 	id: integer('id', { mode: 'number' }).notNull().primaryKey({ autoIncrement: true }),
 	name: text('name').notNull(),
 	createdAt: integer('created_at', { mode: 'timestamp_ms' }).default(sql`CURRENT_TIMESTAMP`),
 	updatedAt: integer('updated_at', { mode: 'timestamp_ms' }).default(sql`CURRENT_TIMESTAMP`)
 })
 
-export const usersToProjectsTable = sqliteTable(
+export const usersToProjects = sqliteTable(
 	'usersToProjects',
 	{
 		userId: text('user_id')
 			.notNull()
-			.references(() => usersTable.id),
+			.references(() => users.id),
 		projectId: integer('project_id')
 			.notNull()
-			.references(() => projectTable.id)
+			.references(() => projects.id)
 	},
 	(t) => ({
 		pk: primaryKey({ columns: [t.userId, t.projectId] })
 	})
 )
 
-export const projectRelations = relations(projectTable, ({ many }) => ({
-	users: many(usersToProjectsTable)
+export const projectsRelations = relations(projects, ({ many }) => ({
+	users: many(usersToProjects)
 }))
 
-export const userToProjectRelation = relations(usersToProjectsTable, ({ one }) => ({
-	user: one(usersTable, {
-		fields: [usersToProjectsTable.userId],
-		references: [usersTable.id]
+export const userToProjectRelation = relations(usersToProjects, ({ one }) => ({
+	user: one(users, {
+		fields: [usersToProjects.userId],
+		references: [users.id]
 	}),
-	project: one(projectTable, {
-		fields: [usersToProjectsTable.projectId],
-		references: [projectTable.id]
+	project: one(projects, {
+		fields: [usersToProjects.projectId],
+		references: [projects.id]
 	})
 }))
 
-export const taskTable = sqliteTable('task', {
+export const tasks = sqliteTable('tasks', {
 	id: integer('id', { mode: 'number' }).notNull().primaryKey({ autoIncrement: true }),
 	name: text('name').notNull(),
+	userId: text('user_id')
+		.notNull()
+		.references(() => users.id),
 	createdAt: integer('created_at', { mode: 'timestamp_ms' }).default(sql`CURRENT_TIMESTAMP`),
 	updatedAt: integer('updated_at', { mode: 'timestamp_ms' }).default(sql`CURRENT_TIMESTAMP`)
 })
+export const tasksRelations = relations(tasks, ({ one }) => ({
+	user: one(users, {
+		fields: [tasks.userId],
+		references: [users.id]
+	})
+}))

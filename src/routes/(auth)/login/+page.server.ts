@@ -4,8 +4,10 @@ import { superValidate, setError } from 'sveltekit-superforms/server'
 import { valibot } from 'sveltekit-superforms/adapters'
 import { Argon2id } from 'oslo/password'
 import { db } from '$lib/server/db'
-import { loginUserSchema } from '$schema/auth'
+import { loginUserSchema } from '$schemas/auth'
 import { lucia } from '$lib/server/auth'
+import { AppRoutes } from '$lib/constants'
+import { sendEmail } from '$lib/server/email'
 export const load: PageServerLoad = async (event) => {
 	if (event.locals.user) {
 		return redirect(307, '/dashboard')
@@ -19,8 +21,8 @@ export const actions: Actions = {
 	login: async (event) => {
 		const form = await superValidate(event.request, valibot(loginUserSchema))
 
-		const existingUser = await db.query.usersTable.findFirst({
-			where: (usersTable, { eq }) => eq(usersTable.username, form.data.username)
+		const existingUser = await db.query.users.findFirst({
+			where: (users, { eq }) => eq(users.username, form.data.username)
 		})
 
 		if (!existingUser) {
@@ -39,6 +41,16 @@ export const actions: Actions = {
 			...sessionCookie.attributes
 		})
 
-		return redirect(302, '/dashboard')
+		sendEmail({
+			from: `Marko <s4fty@gmail.com>`,
+			to: 'shafty@gmail.com',
+			subject: `Your activation link for`,
+			html: 'bla',
+			headers: {
+				//-Entity-Ref-ID': generateId(20)
+			}
+		})
+
+		return redirect(302, AppRoutes.DASHBOARD)
 	}
 }

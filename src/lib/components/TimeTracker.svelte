@@ -5,7 +5,6 @@
 	import Pause from 'lucide-svelte/icons/pause'
 	import Clock from 'lucide-svelte/icons/clock'
 	import { onDestroy } from 'svelte'
-
 	let interval: number | null = null
 	let isRunning = false
 	let original = 0

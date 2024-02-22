@@ -4,7 +4,7 @@
 	import Input from '$lib/components/ui/input/input.svelte'
 	import * as m from '$paraglide/messages.js'
 	import { valibotClient } from 'sveltekit-superforms/adapters'
-	import { registerUserSchema } from '$lib/schemas/auth'
+	import { registerUserSchema } from '$schemas/auth'
 	import * as Card from '$lib/components/ui/card'
 	import Button from '$lib/components/ui/button/button.svelte'
 

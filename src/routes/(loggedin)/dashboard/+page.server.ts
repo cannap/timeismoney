@@ -1,5 +1,5 @@
 import { db } from '$db'
-import { createClientSchema } from '$lib/schemas/client'
+import { createClientSchema } from '$schemas/client'
 import { superValidate } from 'sveltekit-superforms/server'
 import type { Actions, PageServerLoad } from './$types'
 import { valibot } from 'sveltekit-superforms/adapters'

@@ -1,9 +1,7 @@
 <script lang="ts">
-	import type { LayoutServerData } from './$types'
-
 	import Header from '$lib/components/Header.svelte'
 	import Sidebar from './Sidebar.svelte'
-	export let data: LayoutServerData
+	export let data
 </script>
 
 <div class="flex">

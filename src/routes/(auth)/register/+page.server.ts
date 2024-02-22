@@ -3,14 +3,15 @@ import { fail, redirect } from '@sveltejs/kit'
 import { generateId } from 'lucia'
 import { Argon2id } from 'oslo/password'
 import { db } from '$lib/server/db'
-import { usersTable } from '$db/schema'
-import { registerUserSchema } from '$schema/auth'
+import { users } from '$db/schema'
+import { registerUserSchema } from '$schemas/auth'
 import type { Actions, PageServerLoad } from './$types'
 import { pick } from 'valibot'
 import { superValidate, setError } from 'sveltekit-superforms/server'
 import { type Input } from 'valibot'
 import { valibot } from 'sveltekit-superforms/adapters'
 import { uniqueEmail, uniqueUsername } from '$db/helpers'
+import { AppRoutes } from '$lib/constants'
 export const load: PageServerLoad = async (event) => {
 	if (event.locals.user) {
 		return redirect(302, '/')
@@ -51,7 +52,7 @@ export const actions: Actions = {
 
 			const userId = generateId(15)
 			const currentDate = new Date()
-			await db.insert(usersTable).values({
+			await db.insert(users).values({
 				...form.data,
 				id: userId,
 				password: hashedPassword,
@@ -67,6 +68,6 @@ export const actions: Actions = {
 			})
 		}
 
-		return redirect(302, '/dashboard')
+		return redirect(302, AppRoutes.DASHBOARD)
 	}
 }

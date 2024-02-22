@@ -1,5 +1,4 @@
 import { string, minLength, maxLength, email, regex, object, type Input } from 'valibot'
-
 export const USERNAME_VALIDATION = regex(
 	/^[A-Za-z0-9_-]{4,20}$/,
 	'Der Benutzername ist ungültig. Er muss zwischen 4 und 20 Zeichen lang sein und darf nur Buchstaben, Zahlen, Unterstriche und Bindestriche enthalten.'

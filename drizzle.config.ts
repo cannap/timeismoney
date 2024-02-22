@@ -1,6 +1,6 @@
-import { defineConfig } from 'drizzle-kit';
-import * as dotenv from 'dotenv';
-dotenv.config();
+import { defineConfig } from 'drizzle-kit'
+import * as dotenv from 'dotenv'
+dotenv.config()
 export default defineConfig({
 	schema: './src/lib/server/db/schema.ts',
 	driver: 'turso',
@@ -10,4 +10,4 @@ export default defineConfig({
 	},
 	verbose: true,
 	strict: true
-});
+})

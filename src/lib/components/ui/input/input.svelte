@@ -5,7 +5,7 @@
 	import Label from '../label/label.svelte'
 	import type { ValidationErrors } from 'sveltekit-superforms'
 	interface $$Props extends HTMLInputAttributes {
-		error?: ValidationErrors
+		error: string[] | undefined
 		label?: string | undefined
 		id: string | undefined
 	}
@@ -47,6 +47,7 @@
 		aria-invalid={error ? 'true' : undefined}
 		{...$$restProps}
 	/>
+	<slot />
 	{#if error}
 		<p class="mt-2 text-[0.8rem] font-medium text-destructive">
 			{#each error as err}

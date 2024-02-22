@@ -1,6 +1,7 @@
 import { lucia } from '$lib/server/auth'
 import { fail, redirect } from '@sveltejs/kit'
 import type { RequestHandler } from './$types'
+import { AppRoutes } from '$lib/constants'
 
 export const POST: RequestHandler = async (event) => {
 	if (!event.locals.session) {
@@ -15,5 +16,5 @@ export const POST: RequestHandler = async (event) => {
 			...sessionCookie.attributes
 		})
 	}
-	redirect(302, '/register')
+	redirect(302, AppRoutes.AUTH_LOGIN)
 }
