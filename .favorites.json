@@ -1,0 +1,29 @@
+[
+    {
+        "type": "Directory",
+        "name": "w:\\gba\\timeismoney\\src\\lib\\schemas",
+        "parent_id": null,
+        "fsPath": "w:\\gba\\timeismoney\\src\\lib\\schemas",
+        "workspaceRoot": null,
+        "workspacePath": null,
+        "id": "5scBG8RPhdOqpaED"
+    },
+    {
+        "type": "File",
+        "name": "w:\\gba\\timeismoney\\src\\lib\\server\\db\\schema.ts",
+        "parent_id": null,
+        "fsPath": "w:\\gba\\timeismoney\\src\\lib\\server\\db\\schema.ts",
+        "workspaceRoot": null,
+        "workspacePath": null,
+        "id": "p29kiYCrWJRvEsgV",
+        "label": "Drizzle Schema"
+    },
+    {
+        "type": "Group",
+        "name": "DB",
+        "parent_id": null,
+        "workspaceRoot": null,
+        "workspacePath": null,
+        "id": "3Uxwt9SB2AvgmFMT"
+    }
+]

@@ -1,4 +1,5 @@
-import { string, minLength, object, optional } from 'valibot'
+import * as v from 'valibot'
+
 /**
  * 	id: text('id').notNull().primaryKey(),
 	url: text('url'),
@@ -6,9 +7,10 @@ import { string, minLength, object, optional } from 'valibot'
 	size: integer('size'),
 	leaderId: text('leader_id')
  */
-export const createClientSchema = object({
-	name: string([minLength(1, 'Bitte geben Sie einen Kundenmane ein ')]),
-	url: optional(string())
+export const createClientSchema = v.object({
+	name: v.string([v.minLength(1, 'Bitte geben Sie einen Kundenmane ein ')]),
+	//Just for testing
+	url: v.union([v.literal(''), v.string([v.startsWith('https://')])])
 })
 
 export type TCreateClientSchema = typeof createClientSchema

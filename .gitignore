@@ -12,3 +12,4 @@ local.db
 /dev-dist
 dev-dist
 local.sqlite
+mailpit.exe

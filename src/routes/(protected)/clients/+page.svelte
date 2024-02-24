@@ -13,6 +13,7 @@
 
 	const { enhance, form, errors, message } = superForm(data.form, {
 		validators: valibotClient(createClientSchema),
+		dataType: 'json',
 		onResult: ({ result, cancel }) => {
 			if (result.type === 'success') {
 				toast.success('Kunde erfolgreich erstellt.')

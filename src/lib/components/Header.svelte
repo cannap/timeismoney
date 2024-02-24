@@ -4,7 +4,6 @@
 	import UserDropdown from './UserDropdown.svelte'
 	import Button from './ui/button/button.svelte'
 	import { i18n } from '$lib/i18n'
-	import { page } from '$app/stores'
 	import * as m from '$paraglide/messages'
 	import SvelteLink from './SvelteLink.svelte'
 	import TimeTracker from './TimeTracker.svelte'

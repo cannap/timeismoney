@@ -32,4 +32,4 @@ const auth: Handle = async ({ event, resolve }) => {
 	return resolve(event)
 }
 
-export const handle = sequence(i18n.handle({ langPlaceholder: '%lang%' }), auth)
+export const handle = sequence(i18n.handle(), auth)

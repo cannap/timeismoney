@@ -13,7 +13,12 @@ export const load: PageServerLoad = async ({ request, locals }) => {
 
 	const userId = locals?.user?.id
 
-	const form = await superValidate(request, valibot(createClientSchema))
+	const form = await superValidate(request, valibot(createClientSchema), {
+		defaults: {
+			url: 'https://',
+			name: ''
+		}
+	})
 
 	const clients = await db.query.clientTable.findMany({
 		limit: 5,
